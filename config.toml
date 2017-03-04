@@ -3,6 +3,7 @@ baseURL = "http://qetr1ck-op.github.io/blog"
 languageCode = "en-US"
 
 theme = "hugo-code-editor-theme"
+relativeURLs = true
 
 [Params]
   Author = "Orest Prystayko"
