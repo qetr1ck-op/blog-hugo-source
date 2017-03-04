@@ -1,5 +1,5 @@
 title = "My New Hugo Site"
-baseURL = "http://qetr1ck-op.github.io/blog"
+baseURL = "https://qetr1ck-op.github.io/blog"
 languageCode = "en-US"
 
 theme = "hugo-code-editor-theme"
