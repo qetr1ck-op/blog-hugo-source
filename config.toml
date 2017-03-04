@@ -1,0 +1,10 @@
+title = "My New Hugo Site"
+baseURL = "http://qetr1ck-op.github.io/blog"
+languageCode = "en-US"
+
+theme = "hugo-code-editor-theme"
+
+[Params]
+  Author = "Orest Prystayko"
+  locale = "en-US"
+  disqusShortname = "qetr1ck-op"
