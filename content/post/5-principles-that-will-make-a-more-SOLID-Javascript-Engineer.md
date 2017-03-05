@@ -1,16 +1,12 @@
 +++
 title = "5 principles that will make a more SOLID Javascript Engineer"
-tags = [
-    "go",
-    "golang",
-    "templates",
-    "themes",
-    "development",
-]
 date = "2016-07-11"
 categories = [
     "Javascript",
     "OOP",
+    "Arhitecture",
+    "Patterns",
+    "ES2015+"
 ]
 menu = "main"
 +++
@@ -20,7 +16,6 @@ Being a SOLID developer in JS isn't so as straight forward as in other languages
 But what are they?
 
 <!--more-->
-<!--toc-->
 
 # The SOLID principles are: 
 
