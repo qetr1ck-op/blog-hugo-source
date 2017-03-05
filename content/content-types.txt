@@ -1,0 +1,7 @@
+categories = [
+    "Javascript",
+    "OOP",
+    "Architecture",
+    "Patterns",
+    "ES2015+"
+]
