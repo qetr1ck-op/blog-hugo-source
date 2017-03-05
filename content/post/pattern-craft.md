@@ -1,6 +1,12 @@
 +++
 title = "PatternCraft"
-categories = []
+categories = [
+    "Javascript",
+    "OOP",
+    "Architecture",
+    "Patterns",
+    "ES2015+"
+]
 tags = []
 date = "2017-03-05T01:35:33+02:00"
 

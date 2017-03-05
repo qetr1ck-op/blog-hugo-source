@@ -4,7 +4,7 @@ date = "2016-07-11"
 categories = [
     "Javascript",
     "OOP",
-    "Arhitecture",
+    "Architecture",
     "Patterns",
     "ES2015+"
 ]
