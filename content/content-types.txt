@@ -3,5 +3,6 @@ categories = [
     "OOP",
     "Architecture",
     "Patterns",
-    "ES2015+"
+    "ES2015+",
+    "DOM API"
 ]
