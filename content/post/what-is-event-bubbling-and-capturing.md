@@ -5,7 +5,6 @@ categories = [
     "Javascript",
     "DOM API"
 ]
-menu = "main"
 +++
 
 Event bubbling and capturing are two ways of event propagation in the HTML DOM API.
