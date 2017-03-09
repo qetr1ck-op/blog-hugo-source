@@ -2,12 +2,7 @@
 title = 'Units of measurement: "px", "em", "rem" and other'
 date = "2015-11-11 20:17:58"
 categories = [
-    "Javascript",
-    "OOP",
-    "Architecture",
-    "Patterns",
-    "ES2015+",
-    "DOM API"
+    "CSS"
 ]
 +++
 
