@@ -8,6 +8,7 @@ categories = [
     "Patterns",
     "ES2015+",
     "DOM API",
-    "CSS"
+    "CSS",
+    "AngularJS"
 ]
 +++
