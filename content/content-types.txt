@@ -10,6 +10,7 @@ categories = [
     "ES2015+",
     "DOM API",
     "CSS",
-    "AngularJS"
+    "AngularJS",
+    "Git"
 ]
 +++
