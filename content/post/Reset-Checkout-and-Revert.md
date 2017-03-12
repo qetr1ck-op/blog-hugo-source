@@ -1,6 +1,6 @@
 +++
 title = "Git reset, checkout and revert"
-date = "2016-11-06 11:24"
+date = "2016-11-06"
 categories = [
     "Git"
 ]
