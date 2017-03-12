@@ -11,6 +11,7 @@ categories = [
     "DOM API",
     "CSS",
     "AngularJS",
-    "Git"
+    "Git",
+    "Web API"
 ]
 +++
