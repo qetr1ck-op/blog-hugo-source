@@ -8,4 +8,4 @@ relativeURLs = true
 [Params]
   Author = "Orest Prystayko"
   locale = "en-US"
-  disqusShortname = "qetr1ck-op"
+  # disqusShortname = "qetr1ck-op"
