@@ -1,18 +1,18 @@
-title: JSONP
-categories:
-  - Javascript
-date: 2014-10-29 21:44:50
-tags:
-	- XHR
----
++++
+title = "JSONP"
+date = "2014-10-29 21:44:50"
+categories = [
+    "Javascript",
+]
++++
 
-JSONP is really simple trick to overcome XMLHttpRequest same origin domain policy - you can't send AJAX (XMLHttpRequest) request to different domain.
+JSONP is really simple trick to overcome XMLHttpRequest same origin domain policy - you can't send AJAX (XMLHttpRequest) request (not a simple) to different domain.
 
 <!--more-->
 
 So instead of using `XMLHttpRequest` we have to use `script` HTML tag to get data from another domain. And yes, it's sound weird. Example:
 
-```
+```js
 (function() {
 	var script = document.createElement('script');
 	script.type = 'text/javascript'
@@ -23,13 +23,13 @@ So instead of using `XMLHttpRequest` we have to use `script` HTML tag to get dat
 
 Notice the `my_callback` function over here? So when when server receives request and finds callback parameter - instead of returning plain `JSON` object :
 
-```
+```js
 {foo: bar}
 ```
 
 It will return callback: 
 
-```
+```js
 my_callback({foo: bar}) // 'Response from another domain: with {foo: bar}
 
 //it's already implemented
@@ -43,7 +43,8 @@ The profit is that we get automatic callback `my_callback` that will be triggere
 So `JSONP` is callback and script tags.
 
 Basic JavaScript example (simple Twitter feed using JSONP):
-```
+
+```js
 <div id = 'twitterFeed'></div>
 <script>
 function myCallback(dataWeGotViaJsonp){
