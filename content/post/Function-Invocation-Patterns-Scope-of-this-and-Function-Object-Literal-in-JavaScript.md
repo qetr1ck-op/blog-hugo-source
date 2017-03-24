@@ -1,23 +1,21 @@
-title: 'Function Invocation Patterns in JavaScript'
-thumbnailImage: title.png
-thumbnailImagePosition: bottom
-categories:
-  - Javascript
-  - Pattern
-date: 2014-05-29 05:47:57
-tags:
----
-
++++
+title = "Function Invocation Patterns in JavaScript"
+date = "2014-05-29 05:47:57"
+categories = [
+    "Javascript",
+    "OOP",
+    "Architecture",
+    "Patterns",
+]
++++
 
 Describe different approaches to define and call functions
 
 <!--more-->
 
-<!--toc-->
-
 Function object are created with function literals:
 
-```
+```js
 // Create function declaration
 // in it that adds two numbers
 
@@ -51,7 +49,7 @@ The patterns differ how `this` will initialize.
 When a function is stored as a property of an object, we call it a `method`. When a method is invoked, `this` is bound to that object. If an invocation expression contains a refinement (that is, a . dot expression or[subscript] expression), it is
 invoked as a method:
 
-```
+```js
 var myObject = {
     value: 0,
     increment: function (inc) {
@@ -73,7 +71,7 @@ that get their object context from this are called `public methods`.
 When a function is invoked with this pattern, `this is bound to the global object or `undefined`.
 This was a mistake in the design of the language. Had the language been designed correctly, when the inner function is invoked, this would still be bound to the this variable of the outer function. 
 
-```
+```js
 function outer() {
     console.log('outer context ' + this);
     function inner() {
@@ -85,9 +83,7 @@ function outer() {
 outer();
 //outer context[object Window]
 //inner context[object Window]
-[/javascript]
 
-[javascript]
 function func() { 
   "use strict";
   console.log(this); 
@@ -104,7 +100,7 @@ JavaScript is a prototype inheritance language. That means that objects can inhe
 
 Constructor can be any function, which is called with directive `new`
 
-```
+```js
 function Animal(name) {
   this.name = name;
   this.canWalk = true;
@@ -114,7 +110,7 @@ function Animal(name) {
   }
 }
 
-var animal = new Animal('bamby');
+var animal = new Animal('bambi');
 ```
 
 How it works:
@@ -131,7 +127,7 @@ parameters.
 
 Call `func.apply(context, [a, b ...])` or `func.call(context, (a, b ...))` - the same as a normal call `func(a, b ...)`, but with an another `context`.
 
-```
+```js
 var user = { 
   firstName: "Bobby",
   surname: "Singler"
@@ -148,7 +144,7 @@ getName('firstName', 'surname')  // undefined undefined, this, will be window
 
 Invoke apply/call with `null` or `undefined`:
 
-```
+```js
 function f() {
   console.log(this);
 }
@@ -166,5 +162,6 @@ f.call(null); // null
 ```
 
 Save My Day:
-[learn.javascript.ru](http://learn.javascript.ru/this "learn.javascript.ru")
-[Crockfords JavaScript: The Good Parts](http://www.amazon.com/JavaScript-Good-Parts-Douglas-Crockford/dp/0596517742)
+
+* [learn.javascript.ru](http://learn.javascript.ru/this "learn.javascript.ru")
+* [Crockfords JavaScript: The Good Parts](http://www.amazon.com/JavaScript-Good-Parts-Douglas-Crockford/dp/0596517742)
