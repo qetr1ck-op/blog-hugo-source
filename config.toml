@@ -2,8 +2,9 @@ title = "My New Hugo Site"
 baseURL = "https://qetr1ck-op.github.io/blog"
 languageCode = "en-US"
 
-theme = "hugo-code-editor-theme"
+theme = "hugo-code-theme"
 relativeURLs = true
+canonifyURLs = true
 
 [Params]
   Author = "Orest Prystayko"
