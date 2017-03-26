@@ -1,6 +1,6 @@
 +++
 title = "git pull VS git pull --rebase"
-date = "yyyy-mm-dd"
+date = "2014-11-24 23:46:41"
 categories = [
     "Git",
 ]
