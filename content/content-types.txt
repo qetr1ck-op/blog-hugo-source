@@ -18,6 +18,7 @@ categories = [
     "Performance",
     "Books",
     "Katas",
-    "RegExp"
+    "RegExp",
+    "CLI"
 ]
 +++
