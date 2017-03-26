@@ -1,0 +1,8 @@
+baseurl = "https://qetr1ck-op.github.io/blog/"
+languageCode = "en-US"
+title = "qetr1ck-op blog"
+theme = "code-editor"
+
+[params]
+    author = "Orest Prystayko"
+    locale = "en-US"
