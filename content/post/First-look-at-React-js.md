@@ -9,7 +9,7 @@ categories = [
 
 Building a dead simple application with following component structure:
 
-<!--toc-->
+<!--more-->
 
 ```
 - CommentBox
