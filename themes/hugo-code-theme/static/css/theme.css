@@ -2145,6 +2145,14 @@ a {
   min-height: 100%;
   padding-top: 1px;
   padding-bottom: 15px; }
+  .content blockquote {
+    border-left: 3px solid #839496;
+    padding: 0 15px;
+    margin: 1.5em 0 0; }
+  .content code {
+    padding: 0 10px;
+    box-shadow: 0px 0px 5px 1px rgba(0, 31, 39, 0.6);
+    border-radius: 2px; }
 
 .articles-list article {
   margin-bottom: 25px; }

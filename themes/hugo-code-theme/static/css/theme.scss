@@ -38,6 +38,18 @@ a {
   min-height: 100%;
   padding-top: 1px;
   padding-bottom: 15px;
+
+  blockquote {
+    border-left: 3px solid $text-color;
+    padding: 0 15px;
+    margin: 1.5em 0 0;
+  }
+
+  code {
+    padding: 0 8px;
+    box-shadow: 0px 0px 5px 1px $menu-hover-bg-colo;
+    border-radius: 2px;
+  }
 }
 
 .articles-list article {
