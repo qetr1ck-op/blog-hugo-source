@@ -235,7 +235,7 @@ th {
   src: url("../fonts/glyphicons-halflings-regular.eot");
   src: url("../fonts/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/glyphicons-halflings-regular.woff2") format("woff2"), url("../fonts/glyphicons-halflings-regular.woff") format("woff"), url("../fonts/glyphicons-halflings-regular.ttf") format("truetype"), url("../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular") format("svg"); }
 
-.glyphicon, .menu nav h3:not(.home-link):before, .menu nav ul li:before {
+.glyphicon, .menu nav h3.home-link .search-btn, .menu nav h3:not(.home-link):before, .menu nav ul li:before {
   position: relative;
   top: 1px;
   display: inline-block;
@@ -274,7 +274,7 @@ th {
 .glyphicon-music:before {
   content: "\e002"; }
 
-.glyphicon-search:before {
+.glyphicon-search:before, .menu nav h3.home-link .search-btn:before {
   content: "\e003"; }
 
 .glyphicon-heart:before {
@@ -2150,8 +2150,8 @@ a {
     padding: 0 15px;
     margin: 1.5em 0 0; }
   .content code {
-    padding: 0 10px;
-    box-shadow: 0px 0px 5px 1px rgba(0, 31, 39, 0.6);
+    padding: 0 8px;
+    box-shadow: 0px 0px 5px 1px #003b4a;
     border-radius: 2px; }
 
 .articles-list article {
@@ -2159,45 +2159,53 @@ a {
 
 .menu {
   padding-left: 0px; }
-  @media (min-width: 992px) {
-    .menu nav {
-      padding-left: 0px;
-      padding-right: 0px;
-      position: fixed;
-      height: 100%;
-      overflow-y: auto;
-      overflow-x: hidden; } }
-  @media (max-width: 991px) {
-    .menu nav ul {
-      display: none; } }
-  .menu nav h3 {
-    cursor: pointer;
-    font-size: 14px;
-    padding: 4px 0px 4px 15px;
-    margin: 0px; }
-    .menu nav h3.home-link {
-      text-align: center; }
-    .menu nav h3:not(.home-link):before {
-      margin-right: 8px; }
-  .menu nav ul {
-    padding-left: 0px;
-    margin: 0px; }
-    .menu nav ul li {
-      list-style: none;
-      padding: 4px 30px 4px 40px;
-      margin-right: -15px; }
-      .menu nav ul li:before {
-        margin-right: 8px; }
-      .menu nav ul li:hover {
-        background-color: #003b4a; }
-      .menu nav ul li a, .menu nav ul li a:hover {
-        color: #839496;
-        text-decoration: none; }
-  @media (max-width: 991px) {
+  .menu nav {
+    position: relative; }
+    @media (min-width: 992px) {
+      .menu nav {
+        padding-left: 0px;
+        padding-right: 0px;
+        position: fixed;
+        height: 100%;
+        overflow-y: auto;
+        overflow-x: hidden; } }
+    @media (max-width: 991px) {
+      .menu nav ul {
+        display: none; } }
     .menu nav h3 {
-      padding: 10px 0px 10px 15px; }
-    .menu nav ul li {
-      padding: 10px 30px 10px 40px; } }
+      cursor: pointer;
+      font-size: 14px;
+      padding: 4px 0px 4px 15px;
+      margin: 0px; }
+      .menu nav h3.home-link {
+        text-align: center; }
+        .menu nav h3.home-link .search-btn {
+          position: absolute;
+          right: 10px;
+          top: 7px; }
+      .menu nav h3:not(.home-link):before {
+        margin-right: 8px; }
+    .menu nav ul {
+      padding-left: 0px;
+      margin: 0px; }
+      .menu nav ul li {
+        list-style: none;
+        padding: 4px 30px 4px 40px;
+        margin-right: -15px; }
+        .menu nav ul li:before {
+          margin-right: 8px; }
+        .menu nav ul li:hover {
+          background-color: #003b4a; }
+        .menu nav ul li a, .menu nav ul li a:hover {
+          color: #839496;
+          text-decoration: none; }
+    @media (max-width: 991px) {
+      .menu nav h3 {
+        padding: 10px 0px 10px 15px; }
+        .menu nav h3.home-link .search-btn {
+          top: 12px; }
+      .menu nav ul li {
+        padding: 10px 30px 10px 40px; } }
 
 .video-wrapper {
   position: relative;
