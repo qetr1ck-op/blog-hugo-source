@@ -51,7 +51,7 @@ Some behavioral patterns include: **Mediator**, **Observer**.
 
 I personally found the following table a very useful reminder of what a number of patterns has to offer - it covers the 23 Design Patterns mentioned by the GoF:
 
-![](images/posts/Practical-design-patterns-in-JavaScript/img.jpg)
+![](/images/posts/Practical-design-patterns-in-JavaScript/img.jpg)
 
 # Creation Design Patterns in depth
 

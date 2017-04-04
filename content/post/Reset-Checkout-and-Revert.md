@@ -12,7 +12,7 @@ The `git reset`, `git checkout` and `git revert` let you to undo changes in repo
 
 The image bellow will help to think about each command in terms of their effect on the three main components of Git workflow. Keep this components always in mind when you're working with this commands.
 
-![](images/posts/Reset-Checkout-and-Revert/git-main-components.png)
+![](/images/posts/Reset-Checkout-and-Revert/git-main-components.png)
 
 # Reset
 
@@ -25,7 +25,7 @@ git reset HEAD~2
 
 In other words, you're saying that you want to throw away this commits:
 
-![](images/posts/Reset-Checkout-and-Revert/resetting-branch.png)
+![](/images/posts/Reset-Checkout-and-Revert/resetting-branch.png)
 
 This usage of `git reset` is a simple way to undo changes that haven't been shared with any one else. I use this command when I've started working on feature find myself thinking that, "Oh crap, what am I doing? I should start over".
 
@@ -37,7 +37,7 @@ There are following flags:
 
 It's easer to thing of these modes by their scope:
 
-![](images/posts/Reset-Checkout-and-Revert/git-reset-scopes.png)
+![](/images/posts/Reset-Checkout-and-Revert/git-reset-scopes.png)
 
 The command is often used with `HEAD` or with serious of commits hash as the parameter:
 
@@ -70,7 +70,7 @@ git checkout hotfix
 
 Internally it moves `HEAD` to a different branch updates the `working directory` to match. Since this has a potential to overwrite local changes, Git forces you to commit or stash any changes in a working directory. Unlike `git reset` it doesn't move any branches around.
 
-![](images/posts/Reset-Checkout-and-Revert/git-checkout.png)
+![](/images/posts/Reset-Checkout-and-Revert/git-checkout.png)
 
 I can also check arbitrary commits by passing the commit reference of the branch:
 
@@ -78,7 +78,7 @@ I can also check arbitrary commits by passing the commit reference of the branch
 git checkout HEAD~2
 ```
 
-![](images/posts/Reset-Checkout-and-Revert/git-checkout-by-reference.png)
+![](/images/posts/Reset-Checkout-and-Revert/git-checkout-by-reference.png)
 
 This is useful for quickly inspecting an old version of your project. However, since there are no reference to the current `HEAD`, this puts you in a `detached HEAD state`. This can be dangerous if you start adding new commits, because there won't be a way to get back them after you switch to an another branch. For this reason, you should always create a new branch before adding commits to a `detached HEAD`.
 
@@ -93,7 +93,7 @@ git revert HEAD~2
 
 That can be visualized as following:
 
-![](images/posts/Reset-Checkout-and-Revert/git-revert.png)
+![](/images/posts/Reset-Checkout-and-Revert/git-revert.png)
 
 Contrast this with `git reset`, which **does** alter the existing commit history. For this reason `git revert` should be used to undo changes on a public branch and `git reset` should be reserved for undoing changes on a private branch.
 

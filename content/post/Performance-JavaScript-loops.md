@@ -31,7 +31,7 @@ Also I was confused that Array.forEach method is slowest more than 89% from clas
 
 Screenshot from jsperf: 
 
-![](images/posts/Performance-JavaScript-loops/performaceArray.png)
+![](/images/posts/Performance-JavaScript-loops/performaceArray.png)
 
 SaveMyDay:
 

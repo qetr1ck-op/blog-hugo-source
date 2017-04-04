@@ -18,7 +18,7 @@ What is the most reasonable approach?
 *   `document.createTextNode` once per element
 *   `document.createTextNode` once per test run
 
-![](images/posts/Performance-Javascript-adding-text-to-a-node/title.png)
+![](/images/posts/Performance-Javascript-adding-text-to-a-node/title.png)
 
 * * *
 

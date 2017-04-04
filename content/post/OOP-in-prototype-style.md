@@ -40,7 +40,7 @@ console.log(rabbit.location) // call location object through window object
 
 So, object pointed by `__proto__` it is his `prototype`. In another words `prototype` it's "Backup Storage of Properties and Methods", which automatically used in the search.
 
-![](images/posts/OOP-in-prototype-style/img1.png)
+![](/images/posts/OOP-in-prototype-style/img1.png)
 
 #    Method `hasOwnProperty`
 
@@ -71,7 +71,7 @@ In object `__proto__` can be another `__proto__` object and so on. For example, 
 
 <script src="https://gist.github.com/qetr1ck-op/d57b779a057e164bf1d2.js"></script>
 
-![](images/posts/OOP-in-prototype-style/img2.png)
+![](/images/posts/OOP-in-prototype-style/img2.png)
 
 #    Methods to work with `__proto__`
 
@@ -149,13 +149,13 @@ In details it works like this:
 2.  While `new Object` invokes, new object has receives `obj.__proto__ = Object.prototype`.
 3.  `obj.toString === Object.prototype.toString` method will be taken from prototype object.
 
-![](images/posts/OOP-in-prototype-style/img4.png)
+![](/images/posts/OOP-in-prototype-style/img4.png)
 
 #    Build-in "Classes"
 
 The same methods use in arrays `Array`, functions `Function` and other objects. Build-in methods are in `Array.prototype`, `Function.prototype`, etc.
 
-![](images/posts/OOP-in-prototype-style/img5.png)
+![](/images/posts/OOP-in-prototype-style/img5.png)
 
 Thats why everywhere JS developers like to say that "All objects inherit from `Object`". But it's a quite incorrect. All objects inherit from `Object.prototype` via `__proto__` link.
 
