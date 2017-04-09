@@ -1,0 +1,14 @@
+{
+  "name": "blog-hugo-source",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/qetr1ck-op/blog-hugo-source.git",
+  "author": "qetr1ck <orestprustayko@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build:search": "hugo-lunr -o static/json/lunr.json"
+  },
+  "devDependencies": {
+    "hugo-lunr": "0.0.4"
+  }
+}

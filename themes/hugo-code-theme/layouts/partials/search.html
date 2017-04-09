@@ -1,0 +1,60 @@
+<div class="search">
+    <div class="form-group">
+        <input type="text" class="search__input form-control" id="seach" placeholder="search, min 3 chars">
+    </div>
+
+    <div class="search__result"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/1.0.0/lunr.min.js"></script>
+<script>
+    (() => {
+        const inputEl = document.querySelector('.search .search__input');
+        const searchResultEl = document.querySelector('.search .search__result');
+        let searchedPages;
+        const idx = lunr(function () {
+            this.field('uri');
+            this.field('title');
+            this.field('content', { boost: 10 });
+            this.field('categories');
+        });
+        fetch('/blog/json/lunr.json').then(data => data.json())
+            .then(json => {
+                searchedPages = json;
+                searchedPages.forEach((page, i) => {
+                    idx.add(Object.assign({ id: i }, page));
+                });
+            })
+            .then((pages) => inputEl.addEventListener('keyup', onChangeInput));
+
+        function onChangeInput() {
+            const val = this.value.trim();
+            let searchResult;
+
+            if (val.length < 3) return;
+
+            searchResult = idx.search(val);
+            showSeachResult(searchResult);
+        }
+
+        function showSeachResult(searchResult) {
+            let items;
+            let list;
+
+            if (!searchResult.length) {
+                searchResultEl.innerHTML = '';
+                return;
+            }
+
+            items = searchResult.map(result => {
+                const item = searchedPages[result.ref];
+
+                return `<li><a href=/blog/${item.uri}>${item.title}</a></li>`;
+            });
+            list = document.createElement('ul');
+            list.innerHTML = items.join('');
+            searchResultEl.innerHTML = '';
+            searchResultEl.append(list);
+        }
+    })()
+</script>

@@ -1,0 +1,9 @@
+{{ partial "top.html" . }}
+<h1>{{ .Title }}</h1>
+
+<article>
+    {{ .Content }}
+    {{ partial "search.html" . }}
+</article>
+
+{{ partial "bottom.html" . }}
