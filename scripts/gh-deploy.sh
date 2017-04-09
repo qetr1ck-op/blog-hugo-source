@@ -16,8 +16,10 @@ shopt -s extglob
 rm -rf !(/.git) #except .git
 cd ..
 
-echo "💾 Generating lunr.json"
+echo "💾 Generating and commit lunr.json"
 yarn run build:search
+git add --all && git commit -m "Udpate search content in lunr.json (publish.sh)"
+git push origin master
 
 echo "💾 Generating site"
 hugo
