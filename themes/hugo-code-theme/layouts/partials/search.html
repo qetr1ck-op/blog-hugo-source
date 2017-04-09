@@ -1,6 +1,6 @@
 <div class="search">
     <div class="form-group">
-        <input type="text" class="search__input form-control" id="seach" placeholder="search, min 3 chars">
+        <input type="text" class="search__input form-control" id="seach" placeholder="search, min 3 chars" autofocus> 
     </div>
 
     <div class="search__result"></div>
@@ -11,13 +11,14 @@
     (() => {
         const inputEl = document.querySelector('.search .search__input');
         const searchResultEl = document.querySelector('.search .search__result');
-        let searchedPages;
         const idx = lunr(function () {
             this.field('uri');
             this.field('title');
             this.field('content', { boost: 10 });
             this.field('categories');
         });
+        let searchedPages;
+
         fetch('/blog/json/lunr.json').then(data => data.json())
             .then(json => {
                 searchedPages = json;
