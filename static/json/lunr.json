@@ -407,6 +407,12 @@
         "tags": []
     },
     {
+        "uri": "/post/simple-favicon-generator",
+        "title": "Favicon generator",
+        "content": "\nWith so many platforms and icons, it's hard to know exactly what you should do. What are the dimensions of favicon.ico? How many Touch icons do I need? RealFaviconGenerator did the research and testing for you.\n\n!--more--\n\nLink\n\nrealfavicongenerator.net",
+        "tags": []
+    },
+    {
         "uri": "/post/Start-new-project-on-Angular-1-5",
         "title": "Start new project on Angular ^1.5",
         "content": "\nGreat series of recommendation how/why to start new \"NG2 ready\" Angular 1.5 app with architecture of component-oriented approach.\n\n!--more--\n\nHow to do it right\n\nStarting a new app in Angular 1.5, does it make sense?\nAngular 1.5 app as tree of components\nCommunication between Angular 1.5 components and with API\nA flexible Angular 1.5 project structure (the \"fractal\" approach)\nWriting Angular 1.5 in ES6\nUnit testing Angular 1.5 components\n\n Style guides for app\n\nAngularJS styleguide from Todd Motto\n\nGenerators\n\nYo gulp-angular generator",
