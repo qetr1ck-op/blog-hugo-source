@@ -20,3 +20,4 @@ hugo server
 # deploy
 bash scripts/gh-deploy.sh
 ```
+Test for integration with slack
