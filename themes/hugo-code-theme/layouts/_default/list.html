@@ -1,5 +1,7 @@
 {{ partial "top.html" . }}
-{{ $paginator := .Paginate .Data.Pages.ByPublishDate }}
+
+{{ $paginator := .Paginate (where .Data.Pages "Section" "post").ByPublishDate }}
+
 <div class="articles-list">
     {{ range $paginator.Pages }}
     <article>
@@ -8,12 +10,7 @@
     </article>
     {{ end }}
 </div>
-{{ template "_internal/pagination.html" . }}
 
-<!--{{ $paginator := .Paginate .Data.Pages }}-->
-<!--{{ template "_internal/pagination.html" . }}-->
-<!--{{ range $paginator.Pages }}
-   {{ .Title }}
-{{ end }}-->
+{{ template "_internal/pagination.html" . }}
 
 {{ partial "bottom.html" . }}
