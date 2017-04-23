@@ -1,8 +1,3 @@
-title: 'Kata: Reverse words'
-date: 2015-09-13 11:50:12
-tags:
----
-
 +++
 title = "Kata: Reverse words"
 date = "2015-09-13 11:50:12"

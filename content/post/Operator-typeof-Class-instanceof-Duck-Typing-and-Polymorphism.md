@@ -11,9 +11,9 @@ categories = [
 
 Funny to hear when developer says that JS does not have types =) Let's see how to distinguish them right.
 
-<!--more -->
+<!--more-->
 
-#    Operator typeof
+# Operator typeof
 
 Operator `typeof` return type of argument. He has two syntax: `typeof x` and `typeof(x)`.
 
