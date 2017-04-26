@@ -396,6 +396,12 @@
         "tags": []
     },
     {
+        "uri": "/post/prettier-as-a-formating-tool-for-JS",
+        "title": "Prettier as a formating tool for JS",
+        "content": "\nPrettier is an opinionated JavaScript formatter with advanced support for language features from ES2017, JSX, and Flow. It removes all original styling and ensures that all outputted JavaScript conforms to a consistent style. \n\nThis goes way beyond ESLint and other projects built on it. Unlike ESLint, there aren't a million configuration options and rules. But more importantly: everything is fixable. This works because Prettier never \"checks\" anything; it takes JavaScript as input and delivers the formatted JavaScript as output.\n\nIn technical terms: Prettier parses your JavaScript into an AST (Abstract Syntax Tree) and pretty-prints the AST, completely ignoring any of the original formatting. Say hello to completely consistent syntax!\n\nLinks\n\nGithub repo\nIntegration list app\nIntegration with WebStorm\n",
+        "tags": []
+    },
+    {
         "uri": "/post/Prevent-CSS-Caching",
         "title": "Prevent CSS Caching in Wordpress",
         "content": "\nIf you update your WordPress theme’s style.css, you may have noticed that you have to “force-reload” your site in your browser to see the changes. This is because your browser keeps a copy of the CSS cached on your hard drive. \n\n!--more--\n\nDepending on how your server is set up, it may not check for a new version of the stylesheet for a couple hours, or longer! And even if you force-reload to see the changes, visitors who have previously accessed your site may still get the old CSS. \n\nOne way to solve this is to “version” your CSS file, by adding:\n\n<link rel=\"stylesheet\" \nhref=\"?php bloginfo('stylesheeturl'); echo '?' . filemtime( getstylesheet_directory() . '/style.css'); ?\" type=\"text/css\" media=\"screen, projection\" /\n\nSave my day: \n\nMark post\nCss-tricks",
