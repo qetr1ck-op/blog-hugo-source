@@ -12,6 +12,7 @@ categories = [
     "CSS",
     "AngularJS",
     "React",
+    "Flux/Redux",
     "Git",
     "Web API",
     "HTTP",
