@@ -135,8 +135,25 @@ This course will teach you the core Node.js concepts and API modules from simple
 
 * remove logging message to ourself, adding names, timestamp, [example](https://github.com/qetr1ck-op/advanced-nodejs/blob/master/4.3/chat.js)
 
+## The DNS module
 
-5. Node for Web
+* `lookup`, `resolve`, `reverse` methods [example](https://github.com/qetr1ck-op/advanced-nodejs/blob/master/4.4/dns.js)
+
+## UDP sockets
+
+* `dgram` module and creating event emitter by `dgram.createSocket('udp4')`, [example](https://github.com/qetr1ck-op/advanced-nodejs/blob/master/4.5/udp.js)
+
+# Node for Web
+
+## The basic streaming HTTP server
+
+* `http.createServer` as an event emitter, [example](https://github.com/qetr1ck-op/advanced-nodejs/blob/master/5.1/http.js)
+
+## Working with HTTPS
+
+* create key and certificate with `openssl`
+* working with `https`, [example](https://github.com/qetr1ck-op/advanced-nodejs/blob/master/5.2/https.js)
+
 6. Node's Common built-in modules
 7. Working with streams
 8. Cluster adn Child Process
