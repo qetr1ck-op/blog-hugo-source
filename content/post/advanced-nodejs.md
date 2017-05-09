@@ -154,6 +154,52 @@ This course will teach you the core Node.js concepts and API modules from simple
 * create key and certificate with `openssl`
 * working with `https`, [example](https://github.com/qetr1ck-op/advanced-nodejs/blob/master/5.2/https.js)
 
-6. Node's Common built-in modules
-7. Working with streams
-8. Cluster adn Child Process
+## Requesting HTTP/HTTPS data
+
+* 5 major classes of `http` module
+* client [example](https://github.com/qetr1ck-op/advanced-nodejs/blob/master/5.3/request.js)
+* server [example](https://github.com/qetr1ck-op/advanced-nodejs/blob/master/5.3/server.js)
+
+## Working with Routes
+
+* read requested url with `http.IncomingMessage` <- `req.url`
+* response pages with `http.ServerResponse` <- `res.writeHeader()` and `res.end()`
+* redirect response
+* response with JSON
+* `404` response
+* get all response in `http.STATUS_CODES`
+* [example](https://github.com/qetr1ck-op/advanced-nodejs/blob/master/5.4/server.js)
+
+## Parsing URL and Query String
+
+* module `url` with `url.parse('hrefString', ?parseQueryString)` and `url.format()`, [example](https://github.com/qetr1ck-op/advanced-nodejs/blob/master/5.5/url.js)
+* `querystring` module, [example](https://github.com/qetr1ck-op/advanced-nodejs/blob/master/5.5/querystring.js)
+
+# Node's Common built-in modules
+
+## Working with operation system
+
+* module `os`, [example](https://github.com/qetr1ck-op/advanced-nodejs/blob/master/6.1/index.js)
+
+## Working with File System
+
+* Task 1: script to fix files in directory. Each file has its data duplicated. Truncate each file in half. [solution](https://github.com/qetr1ck-op/advanced-nodejs/tree/master/6.2/task1)
+* Task 2: scripts to generate/clean old files in a directory. Anything older than 7 days should be deleted [solution](https://github.com/qetr1ck-op/advanced-nodejs/tree/master/6.2/task2)
+* Task 3: watch a directory and report events which were occurred: added, removed, changed [solution](https://github.com/qetr1ck-op/advanced-nodejs/tree/master/6.2/task3)
+
+## Console and Utilites
+
+* `console.Console`, `util.debuglog`, `util.deprecate`, `util.inherits` and ES6 `extends`, [examples](https://github.com/qetr1ck-op/advanced-nodejs/blob/master/6.3/index.js)
+
+## Debugging
+
+* `node debug script.js`, commands: `help`, `restart`, `sb(line)`, `repl`, `watch(var)`, `list(lines)`
+* `node --inspect --debug-brk script.js`
+
+# Working with streams
+
+
+
+# Cluster adn Child Process
+
+
