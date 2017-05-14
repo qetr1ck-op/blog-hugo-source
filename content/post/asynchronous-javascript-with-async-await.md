@@ -188,3 +188,7 @@ main();
 # Iterate Asynchronously with the `for-await-of` Loop
 
 An [example](https://github.com/mariusschulz/egghead-async-await/tree/master/lesson-8) with `ts` configuration
+
+# Save my day
+
+* [original videos by Marius Schulz on egghead](https://egghead.io/courses/asynchronous-javascript-with-async-await)

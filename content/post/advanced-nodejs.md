@@ -273,3 +273,8 @@ This course will teach you the core Node.js concepts and API modules from simple
 
 * Why shared states with different workers is a problem?
 * Sticky Load Balancer as a solution
+
+# Save my day
+
+* [original course by Samer Buna on pluralsight](https://www.pluralsight.com/courses/nodejs-advanced)
+* [github repo of examples](https://github.com/qetr1ck-op/advanced-nodejs)
