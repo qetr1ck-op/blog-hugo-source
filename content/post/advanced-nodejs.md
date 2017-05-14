@@ -1,5 +1,5 @@
 +++
-title = "advanced nodejs"
+title = "Advanced NodeJS"
 categories = [
     "Javascript",
     "NodeJS", 
@@ -194,12 +194,82 @@ This course will teach you the core Node.js concepts and API modules from simple
 ## Debugging
 
 * `node debug script.js`, commands: `help`, `restart`, `sb(line)`, `repl`, `watch(var)`, `list(lines)`
-* `node --inspect --debug-brk script.js`
+* `node --inspect-brk script.js`
 
 # Working with streams
 
+## Streams all the thing!
 
+* The definition
+* Distinguish to serve enormous file with buffer `fs.readFile` and stream `fs.createReadStream`, [example](https://github.com/qetr1ck-op/advanced-nodejs/tree/master/7.1)
+
+## Steam 101
+
+* Types of stream
+* All stream are instance of EventEmitter
+* Consuming streams `readableStream.pipe(writableStream)` / events
+* Stream Events Table
+* Readable stream mode: "paused/pull", "flowing/push"
+
+## Implementing Readable and Writable streams
+
+* writable [example](https://github.com/qetr1ck-op/advanced-nodejs/blob/master/7.3/writable.js)
+* readable [example](https://github.com/qetr1ck-op/advanced-nodejs/blob/master/7.3/readable.js)
+
+## Duplex and Transform streams
+
+* duplex [example](https://github.com/qetr1ck-op/advanced-nodejs/blob/master/7.4/duplex.js)
+* transform [example](https://github.com/qetr1ck-op/advanced-nodejs/blob/master/7.4/transform.js)
+* transform with [gzip example](https://github.com/qetr1ck-op/advanced-nodejs/blob/master/7.4/zip.js) and [unzip](https://github.com/qetr1ck-op/advanced-nodejs/blob/master/7.4/unzip.js)
 
 # Cluster adn Child Process
 
+## Scalling Node.js application
 
+* Why one process in one CPU is not enough
+* Using multiple process is only way to scale
+* Scalability strategies:
+* "Cloning"
+* "Decomposing (associated with term microservices)"
+* "Splitting (sharding)"
+
+## Child processes events and standard IO
+
+* 4 different way to create child process: `spawn()`, `fork()`, `exec()`, `execFile()`
+* `spawn()` child process [example](https://github.com/qetr1ck-op/advanced-nodejs/blob/master/8.2/spawn.js)
+* using `spawn()` as an stream [example](https://github.com/qetr1ck-op/advanced-nodejs/blob/master/8.2/spawn-pipe.js)
+
+## The Shell syntax with `exec()` and `execFile()`
+
+* `exec()` vs `spawn()`
+* `exec()` with options `shell, cwd, env`, [example](https://github.com/qetr1ck-op/advanced-nodejs/blob/master/8.3/exec.js)
+* `detached` option and `childProcess.unref()` [example](https://github.com/qetr1ck-op/advanced-nodejs/blob/master/8.3/detach.js) with [timer.js](https://github.com/qetr1ck-op/advanced-nodejs/blob/master/8.3/timer.js)
+
+## The `fork()` function
+
+* `fork()` vs `spawn()`
+* communication with [parent](https://github.com/qetr1ck-op/advanced-nodejs/blob/master/8.4/parent.js) and [child](https://github.com/qetr1ck-op/advanced-nodejs/blob/master/8.4/child.js)
+* long running process with http request: [server](https://github.com/qetr1ck-op/advanced-nodejs/blob/master/8.4/server.js) and [computation](https://github.com/qetr1ck-op/advanced-nodejs/blob/master/8.4/compute.js)
+
+## The Cluster module
+
+* Using as a Load Balancer
+* Diagram with Master Process and Cloning Process
+
+## Load-balancing an HTTP server
+
+* benchmark with request per seconds
+* clustering HTTP server [example](https://github.com/qetr1ck-op/advanced-nodejs/tree/master/8.6)
+
+## Broadcasting messages to each Worker
+
+* mocking fetch user from DB only from Master Worker [example](https://github.com/qetr1ck-op/advanced-nodejs/tree/master/8.7)
+
+## Availability and Zero-downtime restart
+
+* [example](https://github.com/qetr1ck-op/advanced-nodejs/tree/master/8.7)
+
+## Shared State and Sticky Load Balancer
+
+* Why shared states with different workers is a problem?
+* Sticky Load Balancer as a solution
