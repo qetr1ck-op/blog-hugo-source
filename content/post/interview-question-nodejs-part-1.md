@@ -1,6 +1,6 @@
 +++
 date = "2017-05-14T17:43:40+03:00"
-title = "Interview question: NodeJS"
+title = "Interview question: NodeJS, part 1"
 categories = [
     "NodeJS", 
     "OOP",
@@ -72,6 +72,10 @@ When an asynchronous operation starts (for example, when we call `setTimeout`, `
 
 In Node.js, the responsibility of gathering events from the operating system or monitoring other sources of events is handled by `libuv`, and the user can register callbacks to be invoked when an event occurs. When async operation is done `libuv` passes control to `V8` to execute the callbacks.
 
+# What is libuv and how does Node.js use it? Is it part of V8?
+
+[libuv](https://github.com/libuv/libuv) is a multi-platform support library with a focus on asynchronous I/O. Its core job is to provide an event loop and callback based notifications of I/O and other activities. In addition, libuv offers core utilities such as timers, non-blocking networking support, asynchronous file system access, child processes and more.
+
 # What is the Call Stack? Is it part of V8?
 
 The call stack is the basic mechanism for javascript code execution. When we call a function, we push the function parameters and the return address to the stack. This allows to runtime to know where to continue code execution once the function ends. In Node.js, the Call Stack is handled by `V8`.
@@ -80,7 +84,7 @@ The call stack is the basic mechanism for javascript code execution. When we cal
 
 * `setImmediate` queues a function behind whatever I/O event callbacks that are already in the event queue. 
 * `process.nextTick` queues a function at the head of the event queue so that it executes immediately after the currently running function completes.
-* `setTimeout` vs `setImmediate` vs `process.nextTick`, visual explanation [http://stackoverflow.com/questions/17502948/nexttick-vs-setimmediate-visual-explanation#38742776]
+* `setTimeout` vs `setImmediate` vs `process.nextTick`, [visual explanation](http://stackoverflow.com/questions/17502948/nexttick-vs-setimmediate-visual-explanation#38742776)
 * `setImmediate` executes after `setTimeout`, [explanation](https://github.com/nodejs/node-v0.x-archive/issues/25788)
 
 # How do you make an asynchronous function return a value?
@@ -108,15 +112,63 @@ function processToGetValue(cb) {
 
 Great article [Understanding execFile, spawn, exec, and fork in Node.js](https://dzone.com/articles/understanding-execfile-spawn-exec-and-fork-in-node)
 
+# How does the cluster module work? How is it different than using a load balancer?
 
+The cluster module works by forking the server into several worker processes (all run inside the **same host**). The master process listens and accepts new connections and distributes them across the worker processes in a `round-robin` fashionhug (with some built-in smarts to avoid overloading a worker process).
 
+A load balancer, in contrast, is used to distribute incoming connections across **multiple hosts**.
 
+# What is load balancing?
 
+Detailed answer [here](/post/what-is-load-balancing/)
 
+# What are the `--harmony-*` flags?
 
+These are flags that one can pass to the Node.js runtime to enable Staged features. Staged features are almost-completed features that are not considered stable by the V8 team.
 
+# How can you read and inspect the memory usage of a Node.js process?
 
+You can invoke the `process.memoryUsage()` method which returns an object describing the memory usage of the Node.js process, measured in bytes.
 
+# What is `process.argv`? What type of data does it hold?
+
+The `process.argv` property returns an array containing the command line arguments passed when the Node.js process was launched. The first element will be `process.execPath`. The second element will be the path to the JavaScript file being executed. The remaining elements will be any additional command line arguments.
+
+# How can we do one final operation before a Node process exits? Can that operation be done asynchronously?
+
+By registering a handler for `process.on('exit')`:
+
+```js
+function exitHandler(options, err) {
+    console.log('clean');
+}
+
+process.on('exit', exitHandler.bind(null));
+```
+Listener functions to the exit event must only perform synchronous operations. To perform asynchronous operations, one can register a handler for `process.on('beforeExit')`.
+
+# What are some of the built-in dot commands you can use in Node’s REPL?
+
+The following dot commands can be used:
+
+* `.break` - When in the process of inputting a multi-line expression, entering the .break command (or pressing the `<ctrl>-C` key combination) will abort further input or processing of that expression.
+* `.clear` - Resets the REPL ‘context’ to an empty object and clears any multi-line expression currently being input.
+* `.exit` - Close the I/O stream, causing the REPL to exit.
+* `.help` - Show this list of special commands.
+* `.save` - Save the current REPL session to a file: `> .save ./file/to/save.js`
+* `.load` - Load a file into the current REPL session. `> .load ./file/to/load.js`
+* `.editor` - Enter editor mode (`<ctrl>-D` to finish, `<ctrl>-C` to cancel)
+
+# Besides V8 and libuv, what other external dependencies does Node have?
+
+Beside V8 and libuv, node has several other dependencies:
+
+* http-parser: a lightweight C library which handles HTTP parsing
+* c-areas: used for some asynchronous DNS requests
+* OpenSSL: used extensively in both the tls and crypto modules
+* zlib: used for fast compression and decompression
+
+Read more about [node dependencies](https://nodejs.org/en/docs/meta/topics/dependencies/).
 
 # Save my day
 
