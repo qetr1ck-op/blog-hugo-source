@@ -21,6 +21,7 @@ categories = [
     "Katas",
     "RegExp",
     "CLI",
-    "Build Tools"
+    "Build Tools",
+    "Deploy"
 ]
 +++
