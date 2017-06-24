@@ -529,7 +529,7 @@
     },
     {
         "uri": "/post/2017/06/react-app-with-express-in-production",
-        "title": "react app with express in production",
+        "title": "React app with Express in production",
         "content": "\nPassword randomizer app which was done with: REST API on Express.js, Client app on React.js, Build with npm, Deploy on Heroku.\n\n!--more--\n\nDemo\n\nclient app\napi/password\nrepo\n\n Documentation\n\nCreate React App with Express in Production by Dave Ceddia",
         "tags": []
     },
