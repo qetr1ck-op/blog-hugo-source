@@ -1,6 +1,6 @@
 +++
 date = "2017-06-24T20:46:01+03:00"
-title = "react app with express in production"
+title = "React app with Express in production"
 tags = []
 categories = [
     "Javascript",
