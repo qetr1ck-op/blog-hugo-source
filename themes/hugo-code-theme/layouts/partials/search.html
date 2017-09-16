@@ -50,7 +50,7 @@
             items = searchResult.map(result => {
                 const item = searchedPages[result.ref];
 
-                return `<li><a href=/blog/${item.uri}>${item.title}</a></li>`;
+                return `<li><a href=/blog/${(item.uri).toLowerCase()}>${item.title}</a></li>`;
             });
             list = document.createElement('ul');
             list.innerHTML = items.join('');
