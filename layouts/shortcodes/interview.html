@@ -1,0 +1,50 @@
+<script>
+  class Interview {
+    constructor() {
+      this.postNode = document.querySelector('article')
+      this.questionTagName = 'blockquote'
+      this.questionNodes = this.postNode.querySelectorAll(this.questionTagName)
+    }
+  
+    hideAnswers() {
+      this.questionNodes.forEach(node => this.toggleAnswerNodes(node))
+    }
+  
+    toggleAnswerNodes(node) {
+      const answerNode = node.nextElementSibling
+      
+      if (!answerNode || this.isQuestionNode(answerNode) || this.isTitleNode(answerNode)) return
+    
+      answerNode.classList.toggle('hidden')
+      this.toggleAnswerNodes(answerNode)
+    }
+  
+    isQuestionNode(node) {
+      return node.tagName.toLowerCase() === this.questionTagName
+    }
+  
+    isTitleNode(node) {
+      return node.tagName.toLowerCase() === 'h1'
+        || node.tagName.toLowerCase() === 'h2'
+        || node.tagName.toLowerCase() === 'h3'
+    }
+  
+    initListener() {
+      this.postNode.addEventListener('click', e => {
+        const questionTag = this.getParentQuestionNode(e.target)
+        
+        if (questionTag) this.toggleAnswerNodes(questionTag)
+      })
+    }
+  
+    getParentQuestionNode(node) {
+      if (this.isQuestionNode(node))
+        return node
+    
+      return node === document.body ? false : this.getParentQuestionNode(node.parentElement)
+    }
+  }
+  
+  const survey = new Interview()
+  survey.initListener()
+  </script>
