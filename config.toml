@@ -1,5 +1,5 @@
 title = "OP blog"
-baseURL = "https://qetr1ck-op.github.io/blog"
+baseURL = "https://qetr1ck-op.github.io"
 languageCode = "en-US"
 
 theme = "hugo-code-theme"
