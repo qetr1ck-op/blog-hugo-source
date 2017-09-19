@@ -30,6 +30,7 @@ To rock the interview to achieve what you deserve and to improve your concepts a
 
 > What are the differences between `undeclared`, `undefined`, and `null`?
 
+{{% answer %}}
 **Answer:** JavaScript has two distinct values for nothing, `null` and `undefined`. Also there are `undeclared` variables which don’t even exist.
 
 **Explanation:** 
@@ -49,14 +50,17 @@ declaredVariable;
 * `undeclared` when it does not use the var keyword. It gets created on the global object, thus it operates in a different space as the declared variables.
 * `undefined` means, value of the variable is not defined. JavaScript has a global variable `undefined` whose value is "undefined" and `typeof undefined` is also "undefined"
 * `null` means empty or non-existent value which is used by programmers to indicate “no value”. `null` is a primitive value and you can assign `null` to any variable. You cannot add properties to it. Sometimes people wrongly assume that it is an object, because `typeof null` returns "object".
+{{% /answer %}}
 
-> What are the differences between `==` and `===`? To what type `==` operands will be converted to if they have 
-different types?
+> What are the differences between `==` and `===`? To what type `==` operands will be converted to if they have different types?
 
+{{% answer %}}
 **Answer:** The simplest way of saying that, `==` will not check types and `===` will check whether both sides are of same type. So, `==` under the hood converts to number type if they have not the same type and then do the comparison.
+{{% /answer %}}
 
 > As `[]` is `true`, `[] == true` should also be `true`, right? Explain comparison algorithm.
 
+{{% answer %}}
 **Answer:** Not.
 
 You are right about first part, `[]`, empty array is an object and object is always truths. 
@@ -67,23 +71,29 @@ However, special case about `==` (not-strict equal) is that it will do some impl
 2. JavaScript implementation will try to convert `[]` by using `toPrimitive` (of JavaScript implementation). since `[].valueOf` is not primitive will use `toString` and will get `""`.
 3. Now you are comparing `"" == 1` and still left and right is not same type. Hence left side will be converted again to a number and empty string will be `0`.
 4. Finally, they are of same type, you are comparing `0 === 1` which will be `false`.
+{{% /answer %}}
 
 > Why `typeof bar === object` isn't right? How can this pitfall be avoided?
 
+{{% answer %}}
 **Answer:** Use `Object.prototype.toString.call(<object>)` or use Duck Typing.
 
 **Explanation:** The surprising gotcha in JavaScript is that `null` is also considered an object!
+{{% /answer %}}
 
 > What is `NaN`? What is its type? How can you reliably test if a value is equal to `NaN`?
 
+{{% answer %}}
 **Answer:** "not a number", "number", `NaN` compared to anything – even itself! to `false`. Use `Number.isNaN`
 
 **Explanation:** The NaN property represents a value that is “not a number”. This special value results from an operation that could not be performed either because one of the operands was non-numeric (e.g., "abc" / 4), or because the result of the operation is non-numeric (e.g., an attempt to divide by zero).
 
 ES6 offers a new `Number.isNaN()` function, which is a different and more reliable than the old global `isNaN()` function.
+{{% /answer %}}
 
 > What is the significance, and what are the benefits, of including `'use strict'` at the beginning of a JavaScript source file?
 
+{{% answer %}}
 **Answer:** `'use strict'` is a way to enforce stricter parsing and error handling on your code at runtime. Code errors that would otherwise have been ignored or would have failed silently will now generate errors or throw exceptions.
 
 **Explanation:** Some of the key benefits of strict mode include:
@@ -93,11 +103,13 @@ ES6 offers a new `Number.isNaN()` function, which is a different and more reliab
 * Eliminates `this` coercion. Without `strict mode`, a reference to a this value of `undefined` is automatically coerced to the global. This can cause many headfakes and pull-out-your-hair kind of bugs.
 * Disallows duplicate property names or parameter values. Strict mode throws an error when it detects a duplicate named property in an object (e.g.,` var object = {foo: "bar", foo: "baz"};`) or a duplicate named argument for a function (e.g., `function foo(val1, val2, val1){}`), thereby catching what is almost certainly a bug in your code that you might otherwise have wasted lots of time tracking down.
 * Throws error on invalid usage of delete. The delete operator (used to remove properties from objects) cannot be used on non-configurable properties of the object. Non-strict code will fail silently when an attempt is made to delete a non-configurable property, whereas strict mode will throw an error in such a case.
+{{% /answer %}}
 
 ### Scope and hoisting, closure and functions
 
 > Example. What is the result will be an error?
 
+{{% answer %}}
 ```js
 say('World');
 
@@ -109,9 +121,11 @@ function say(name) {
 ```
 
 **Answer:** 'undefined, World!'
+{{% /answer %}}
 
 > Example. What is the result? What if to remove `var value = false`?
 
+{{% answer %}}
 ```js
 var value = 0;
 
@@ -129,9 +143,11 @@ console.log(value);
 ```
 
 **Answer:** `0`, after remove line of code, will be changed global variable and the result will be `true`.
+{{% /answer %}}
 
 > Example. What is the result?
 
+{{% answer %}}
 ```javascript
 fn1();
 fn2();
@@ -160,13 +176,17 @@ const fn4 = function () {
 ```
 
 **Answer:** `fn4` function expression isn't hoisted. Change to function declaration. The result should be `fn2, fn4, fn3, fn1`
+{{% /answer %}}
 
 > What is a closure? What is a practical use for a closure? Provide an example. 
 
+{{% answer %}}
 **Answer:** Closure is a function with all accessible variables in lexical environment. Main usage is encapsulating data from outer usage.
+{{% /answer %}}
 
 > Example. What is the result? How to make them independent?
 
+{{% answer %}}
 ```js
 let initCount = 1;
 
@@ -183,9 +203,11 @@ console.log( counter() ); // ?
 console.log( counter2() ); // ?
 console.log( counter2() ); // ?
 ```
+{{% /answer %}}
 
 > Closures Inside in loop with `setTimeout`.
 
+{{% answer %}}
 If log the loop counter inside `setTimeout`, what will be logged?
 
 ```js
@@ -226,9 +248,11 @@ for(let i = 0; i < 10; i++) {
   }, 10);
 }
 ```
+{{% /answer %}}
 
 > Write a simple function to tell whether `'foo'` is passed as parameter or not?
 
+{{% answer %}}
 **Answer:** First convert `arguments` to an array with `rest` operator, after that simply use `Array.prototype.includes`.
 
 ``` js
@@ -242,18 +266,22 @@ function isFooPassed(...params) {
   return params.includes('foo');
 }
 ```
+{{% /answer %}}
 
 > How could you use "Math.max" to find the max value in an array?
 
+{{% answer %}}
 ```js
 Math.max(...arr);  
 
 //ES5 way
 //Math.max.apply(Math, arr);  
 ```
+{{% /answer %}}
 
 > How could you set a prefix before everything you log? for example, if you `log('my message')` it will log: `(app) my message`
 
+{{% answer %}}
 **Answer:** Just get the arguments, convert it to an array and `unshift` whatever prefix you want to set. Finally, use apply to pass all the arguments to console.
 
 ```js
@@ -269,9 +297,11 @@ function log(...params){
   console.log(['(app)', ...params]);
 }
 ```
+{{% /answer %}}
 
 > Cashing / Memoization. How could you implement cache to save calculation time for a recursive fibonacci function?
 
+{{% answer %}}
 ```js
 const fibonacci = (() => {
   const memo = {};
@@ -302,9 +332,11 @@ const fibonacci = (() => {
 Memoization is a programming technique which attempts to increase a function’s performance by caching its previously computed results. Because JavaScript objects behave like associative arrays, they are ideal candidates to act as caches. Each time a memoized function is called, its parameters are used to index the cache. If the data is present, then it can be returned, without executing the entire function.  However, if the data is not cached, then the function is executed, and the result is added to the cache.
 
 In the following example, the original Fibonacci function is rewritten to include memoization. In the example, a self-executing anonymous function returns an inner function, f(), which is used as the Fibonacci function. When f() is returned, its closure allows it to continue to access the “memo” object, which stores all of its previous results. Each time f() is executed, it first checks to see if a result exists for the current value of “n”. If it does, then the cached value is returned. Otherwise, the original Fibonacci code is executed. Note that “memo” is defined outside of f() so that it can retain its value over multiple function calls. Recall that the original recursive function was called over 40 billion times to compute the 50th Fibonacci number. By implementing memoization, this number drops to 99.
+{{% /answer %}}
 
 > Why wrapping the entire content of a JavaScript source file in IIFE?
 
+{{% answer %}}
 ```js
 (function($) { /*...*/ } )(jQuery);
 ```
@@ -312,9 +344,11 @@ In the following example, the original Fibonacci function is rewritten to includ
 **Answer:** This technique creates a closure around the entire contents of the file which, perhaps most importantly, creates a private namespace and thereby helps avoid potential name clashes between different JavaScript modules and libraries.
 
 **Explanation:** Another feature of this technique is to allow for an easily referenceable (presumably shorter) alias for a global variable.
+{{% /answer %}}
 
 > Explain why the following doesn't work as an IIFE: `function foo(){ }();`
 
+{{% answer %}}
 **Answer:** Because `foo` isn’t being called! This is a function definition, it defines `foo`. But it’s not a function expression - that is, it’s not understood by the JS parser to actually call a function.
 
 For the parser, things look like this:
@@ -348,11 +382,13 @@ Also will work with `!` and `+` operators:
 
 }();
 ```
+{{% /answer %}}
 
 ### Objects 
 
 > What the heck is `this` in JavaScript?
 
+{{% answer %}}
 **Answer:** At the time of execution of every function, JavaScript engine sets a property to the function called `this` which refer to the current execution context. `this` is always refer to an object and depends on how function is called:
 
 1. In the global context or inside a function this refers to the `window`/`global` object. In ES6 module or with `use strict` directive it's `undefined`
@@ -360,17 +396,21 @@ Also will work with `!` and `+` operators:
 3. If you use a constructor (by using `new` keyword) to create an object, the value of `this` will refer to the newly created object.
 4. Set the value of `this` to any arbitrary object by passing the object as the first parameter of `bind`, `call` or `apply`
 5. Use `arrow function` for use parent LexicalEnvironment.
+{{% /answer %}}
 
 > Why we need `call` or `apply` or `bind`. If you want to use an arbitrary object as value of this, how will you do that?
 
+{{% answer %}}
 **Answer:** To use an arbitrary object as value of this.
 
 There are at least four different ways to doing this by using `bind`, `call`, `apply` and `arrow function`.
 
 [call & apply VS bind, the simplest explanation](http://qetr1ck-op.github.io/2016/08/06/call-apply-VS-bind-the-simplest-explanation/)
+{{% /answer %}}
 
 > How would you compare two objects?
 
+{{% answer %}}
 **Answer:** JavaScript has two different approaches for testing equality. Primitives like strings and numbers are compared by their value, while objects like arrays, dates, and user defined objects are compared by their reference. This means it compares whether two objects are referring to the same location in memory.
 
 Equality check will check whether two objects have same value for same property. To check that, you can get the keys for both the objects. 
@@ -398,9 +438,11 @@ function isEqual(a, b) {
     return true;
 }
 ```
+{{% /answer %}}
 
 > In what order are logging properties in the object?
 
+{{% answer %}}
 ```js
 var codes = {
   // keys of country: name of country
@@ -417,9 +459,11 @@ for (var code in codes) console.log(code); // ?
 
 **Explanation:**
 If name of property is non-numeric string, such keys always moving in the order in which they assigned. On the other hand, if the name of the property - a number or a numeric string, then all modern browsers such properties are sorted for internal optimization.
+{{% /answer %}}
 
 > Why using `for...in` for Array iteration is wrong?
 
+{{% answer %}}
 **Answer:** Array indexes are just enumerable properties with integer names and are otherwise identical to general `Object` properties. There is no guarantee that `for...in` will return the indexes in any particular order. The `for...in` loop statement will return all enumerable properties, including those with non–integer names and those that are inherited.
 
 ```js
@@ -432,9 +476,11 @@ for (var i in arr) {
 ```
 
 Another point is that `for (var i = 0; i < arr.length; i++)` is up to 10-100x time faster.
+{{% /answer %}}
 
 > What’s the difference between `for..in` and `for..of`?
 
+{{% answer %}}
 * `for..in` loops over enumerable property names of an object
 
 ```js
@@ -456,17 +502,21 @@ for (var i of arr) {
 ```
 
 In your example, the array iterator does yield all the values in the array (ignoring non-index properties).
+{{% /answer %}}
 
 ### OOP
 
 > How prototype inheritance works? Are you aware of classical approach and with OOLO.
 
+{{% answer %}}
 **Answer:** In most languages, there are classes and objects. Classes inherit from other classes. In JavaScript, the inheritance is prototype-based. That means that there are no classes. Instead, an object inherits from another object. The main point is that one object can be `prototype` of another object. That means if property isn’t found in the object - than it takes from `prototype` object. In JavaScript this implementation is at the language level.
 
 **Explanation:** [OOP in prototype style](http://qetr1ck-op.github.io/2014/09/15/OOP-in-prototype-style/)
+{{% /answer %}}
 
 > Example. Create inheritance and/or composition. When properties is not reached in `child`, it should be available through `parent`
 
+{{% answer %}}
 ```js
 const parent = {
   surname: 'Winchester',
@@ -496,9 +546,11 @@ const child = Object.create(parent, {
 //1. Composition
 const child = Object.assign({}, parent, child);
 ```
+{{% /answer %}}
 
 > Extend Core Object through prototype. How could you write a method on instance of a date which will give you next day?
 
+{{% answer %}}
 **Answer:** You need to declare a method on the prototype of Date object. To get access to the current value of the instance of the date use `this`
 
 ```js
@@ -510,9 +562,11 @@ const date = new Date();
 date; //Fri May 16 2014 20:47:14 GMT-0500 (Central Daylight Time)
 date.nextDay();//Sat May 17 2014 20:47:14 GMT-0500 (Central Daylight Time)
 ```
+{{% /answer %}}
 
 > Extend Core Object through prototype. Example 2. How could you make this work `[1,2,3,4,5].duplicator()` to return `[1,2,3,4,5,1,2,3,4,5]`?
 
+{{% answer %}}
 **Answer:** We need to add a method in the prototype of Array object.
 
 ```js
@@ -525,9 +579,11 @@ Array.prototype.duplicator = function() {
   return [...this, ...this];
 } 
 ```
+{{% /answer %}}
 
 > Example. Make a subclass from parent class `Animal`
 
+{{% answer %}}
 ```js
 // parent class or abstract class
 function Animal(name) {
@@ -576,9 +632,11 @@ Rabbit.prototype.run = function() {
 var rabbit = new Rabbit('white rabbit');
 rabbit.run();
 ```
+{{% /answer %}}
 
 > Rewrite previous example to ES6 classes.
 
+{{% answer %}}
 **Answer:**
 
 ```js
@@ -605,9 +663,11 @@ class Rabbit extends Animal {
 var rabbit = new Rabbit('white rabbit');
 rabbit.run();
 ```
+{{% /answer %}}
 
 > Difference between: `function Person(){}`, `var person = Person()`, and `var person = new Person()`? What `new` operator do?
 
+{{% answer %}}
 **Answer:** In the example below we define a new "class" called Person with an empty constructor. Invoke function `Person()` will return `undefined`. On the other hand invoking `new Person` will return an empty object `{}`.
 
 **Explanation:**
@@ -622,9 +682,11 @@ And the spec says, the `new` operator uses the internal `[[Construct]]` method, 
   * Note: The terminology can be confusing. The property named `prototype` is not the same as the prototype of the object. Only functions have the property named "prototype", but all objects have a prototype.
 3. Calls the function `Person` with `this` set to the new object, and with the supplied `arguments`.
 4. If calling the function `Person` returns an object, this object is the result of the expression. Otherwise the newly created object is the result of the expression.
+{{% /answer %}}
 
 > `new F` vs `Object.create`
 
+{{% answer %}}
 **Answer:** `new F` is `Object.create(F.prototype)` with additionally running the constructor function. And giving the constructor the chance to return the actual object that should be the result of the expression instead of this. So basically `Object.create` doesn't execute the constructor.
 
 **Explanation:**
@@ -649,11 +711,13 @@ var bob = Object.create(userB, { // object descriptor
   }
 });
 ```
+{{% /answer %}}
 
 ### DOM
 
 > Is there are a difference `window` VS `document`?
 
+{{% answer %}}
 **Answer:**  Yes. JavaScript has a global `window` object and everything runs under it. `document` is a property of `window` object.
 
 **Explanation:** 
@@ -661,25 +725,31 @@ var bob = Object.create(userB, { // object descriptor
 `window` is global object that holds global variables, global functions, location, history everything is under it. Besides, `setTimeout`, ajax call (`XMLHttpRequest`), `console` or `localStorage` are part of window.
 
 `document` is also under `window`. `document` represents the `DOM`,  the object oriented representation of the html markup. All the nodes are part of document. Hence you can use `getElementById` or `addEventListener` on document. These methods are not present in the `window` object.
+{{% /answer %}}
 
 > How could you make sure to run some javaScript when DOM is ready like `$(document).ready?`
 
+{{% answer %}}
 **Answer:** There are four different ways:
 
 1. Put your script in the last tag of html body element. DOM would be ready by the time browser hits the script tag.
 2. Place your code inside a `DOMContentLoaded` handler. This event will be fired when DOM is completely loaded.
 3. Watch changes in the `readyState` of the `document`. And the last state is `"complete"` state, you can put your code there.
 4. Use jQuery `$(document).ready`.
+{{% /answer %}}
 
 > `window.onload` VS `document.onload` VS `document.addEventListener('DOMContentLoaded')`. Do they fire at the same time?
 
+{{% answer %}}
 **Answer:**
 * `window.onload` is fired when all page is loaded, including all resources (images, styles, iframes)
 * `document.onload` is fired when DOM (DOM tree built from markup code within the document) is ready which without external content.
 * `DOMContentLoaded` means that DOM has already been built, we can use handlers or search through the nodes, but resources such as images, styles don't be loaded yet
+{{% /answer %}}
 
 > Is `attribute` similar to `property`?
- 
+
+{{% answer %}} 
 **Answer:** We operate with DOM-properties via JS. Attributes are part of HTML markup.
 
 **Explanation:** 
@@ -697,9 +767,11 @@ Attributes are in the HTML itself, rather than in the DOM. They are very similar
 * `elem.setAttribute(name, value)`
 * `elem.removeAttribute(name)`
 * `elem.attributes`
+{{% /answer %}}
 
 > What are the different ways to get an element from DOM?
- 
+
+{{% answer %}} 
 **Answer:** You can use the following methods in `document`:
 
 * `getElementById` to get a element that has the provided Id.
@@ -713,9 +785,11 @@ There are two more options but don't used frequently:
 
 * `getElementsByName` returns the list of elements by the provided name of the html tag
 * `getElementsByTagNameNS` returns elements with particular tag name within the provided namespace
+{{% /answer %}}
 
 > Fastest way to Query DOM: 
 
+{{% answer %}}
 **Answer:** If you have an ID of an element `getElmentById` is the fastest way to select an element. However, you should not have so many ID in you document to avoid style repetition. `getElementsByClassName` is the second quickest way to select an element.
 
 Here is the list. As we go downwards through the list, it takes more time to select elements.
@@ -729,13 +803,17 @@ Here is the list. As we go downwards through the list, it takes more time to sel
 * Universal (*)
 * Attribute (input[type="checkbox"])
 * Pseudo (p:first-child)
+{{% /answer %}}
 
 >  Why `querySelectorAll('.my-class')` is slower than `getElementsByClassName('my-class')`?
 
+{{% answer %}}
 **Answer:** `querySlectorAll` is a generic purpose method. It is optimized for different kinds of selectors. Hence it has to check whether you put a `"#"` or `"."` in front of the parameter you are passing. If you are just passing a class name with `"."`, under the hood it uses `getElementsByClassName` (could vary based on browser implements). Whereas if you directly uses `getElementsByClassName` it directly uses this method and doesn't have to go through all the initial processing of `querySelectorAll`. Hence to search elements with a particular class name, `getElementsByClassName` is faster than `querySelectorAll`.  
+{{% /answer %}}
 
 > Why we can't use `forEach` or similar array methods on a `NodeList`? How could you solve this problem?
 
+{{% answer %}}
 **Answer:** Both `array` and `nodeList` have `length` and you can loop through elements but they are not same object.
 
 Both are inherited from `Object`. However `array` has different `prototype` object than `nodeList`. `forEach`, `map`, etc are on `array.prototype` which doesn't exist in the `NodeList.prototype` object:
@@ -770,9 +848,11 @@ Array.from(myNodeList).forEach(cb);
 // for...of statement
 for (var el of myNodeList) cb(el);
 ```
+{{% /answer %}}
 
 >  How would you add/remove/toggle a class to an element?
 
+{{% answer %}}
 **Answer:**
 
 ```javascript
@@ -780,9 +860,11 @@ el.classList.remove('my-class'); //removing a class
 el.classList.toggle('my-class');  // toggling a class
 el.classList.contains('my-class'); // checking whether class exists
 ```
+{{% /answer %}}
 
 > How to check if element isn't empty, without children?
- 
+
+{{% answer %}} 
 ```javascript
 if (!elem.childNodes.length) { ... }
 
@@ -792,15 +874,19 @@ if (!elem.firstChild) { ... }
 
 if (!elem.lastChild) { ... }
 ```
+{{% /answer %}}
 
 > How you would perform next operation: create element with content, add `data-foo` attribute, append newly created element to whatever you want, then move it before some element, change text of it, remove it from DOM. How to clone an element?
- 
+
+{{% answer %}} 
 **Answer:** Use the next methods `document.createElement(tag)`, `el.innerHTML`, `parent.appendChild(el)`, `parent.insertBefore(el, someEl)`, `parent.removeChild(el)`
 
 For clone an element we can create function or use `el.cloneNode(true)` where `true` means deep cloning.
+{{% /answer %}}
 
 > How to delete all children of element?
 
+{{% answer %}}
 **Answer:** 
 
 ```javascript
@@ -814,13 +900,17 @@ function removeChildren(elem) {
   }
 }
 ```
+{{% /answer %}}
 
 > createTextNode vs innerHTML
 
+{{% answer %}}
 **Answer:** It depends on content. `innerHTML` inserts content as HTML, but `createTextNode` inserts tags as text.
+{{% /answer %}}
 
 > What is the best way to create a DOM element? Set `innherHTML` or use `createElement`? Do you know about `insertAdjacentHTML`?
 
+{{% answer %}}
 **Answer:** According to jsPerf option 1 is approximately 3 times slower than option 2.
 
 **Explanation:** 
@@ -836,9 +926,11 @@ Setting `innerHTML` does indeed invalidate any references to elements within the
 In short, if you're appending, I'd use `appendChild` or `insertAdjacentHTML`. If you're replacing, there are very valid situations where using innerHTML is a better option than creating the tree yourself via the DOM API.
 
 Finally, it's worth mentioning `insertAdjacentHTML`, which is a function that you can use to insert nodes and elements into or next to an element using an HTML string. You can append to an element with it: `theElement.insertAdjacentHTML("beforeend", "the HTML goes here");`
+{{% /answer %}}
 
 > What is `createDocumentFragment` and why you might use it?
 
+{{% answer %}}
 **Answer:** If you are changing DOM that cause expensive reflow, you can avoid it by using `documentFragment` as it is managed in the memory.
 
 **Explanation:**
@@ -873,9 +965,11 @@ for (var i = 0; i < list.length; i++) {
 }
 document.body.appendChild(fragment);
 ```
+{{% /answer %}}
 
 > When would you use "document.write()" ?
 
+{{% answer %}}
 **Answer:** In terms of vendors supplying third parties or analytics code (like Google Analytics) it's actually the easiest way for them to distribute such snippets.
 
 ```html
@@ -895,9 +989,11 @@ document.body.appendChild(fragment);
 `document.write` only works while the page is loading; If you call it after the page is done loading, it will overwrite the whole page.
 
 This effectively means you have to call it from an inline script block - And that will prevent the browser from processing parts of the page that follow. Scripts and Images will not be downloaded until the writing block is finished.
+{{% /answer %}}
 
 > What is reflow? What causes reflow? How could you reduce reflow?
 
+{{% answer %}}
 **Answer:** When you change size or position of an element in the page, all the elements after it has to change their position according to the changes you made. For example, if you change height on an element, all the elements under it has to move down in the page to accomodate a change in height. Hence, flow of the elements in the page is changed and this is called *reflow*.
 
 Re-flows could be very expensive and it might have a performance hit specially in the smaller devices like phone. As it might causes changes in the portion (or whole) layout of the page.
@@ -921,9 +1017,11 @@ How to avoid: To avoid reflow, try to avoid doing things in the above list and s
 * avoid tables for layout
 
 More: [reflow and repaint: css performance makes your JS slow](http://www.stubbornella.org/content/2009/03/27/reflows-repaints-css-performance-making-your-javascript-slow/#animations)
+{{% /answer %}}
 
 > What is repaint and when does this happen?
 
+{{% answer %}}
 **Answer:** repaint happens when you change the look of an element without changing the size and shape. This doesn't cause reflow as geometry of the element didn't changed.
 
 How it happens:
@@ -931,9 +1029,11 @@ How it happens:
 * change background color
 * change text color
 * visibility hidden
+{{% /answer %}}
 
 > What is `defer` and `async` attribute does in a script tag?
 
+{{% answer %}}
 **Answer:** HTML parser will ignore `defer` and `async` keyword for inline script (script that does not have a src attribute).
 
 * with `<script async src="...">` browser downloads the file during HTML parsing and will pause the HTML parser to execute it when it has finished downloading
@@ -959,11 +1059,13 @@ How it happens:
 <script defer src="big.js"></script>
 <script defer src="small.js"></script>
 ```
+{{% /answer %}}
 
 ### Events
 
 > What is event bubble? How does event flows (event phases)?
 
+{{% answer %}}
 **Answer:** to understand event bubble, you have to understand what happen when you click on anything on a page.
 
 The event flow model specified by DOM Level 2 Events has three phases to it:
@@ -975,9 +1077,11 @@ The event flow model specified by DOM Level 2 Events has three phases to it:
 Event handlers with `on<eventName>` doesn't know anything about capture phase.
 
 To capture on `capture` phase need to `addEventListener(<eventName>, <cb>, true)`, otherwise it will work by bubble phase.
+{{% /answer %}}
 
 > Explain event delegation
 
+{{% answer %}}
 **Answer:** Event delegation allows you to avoid adding event listeners to specific nodes, instead, the event listener is added to one parent. That event listener analyzes bubbled events to find a match on child elements.
 
 **Explanation:** 
@@ -1010,17 +1114,23 @@ document.getElementById("parent-list").addEventListener("click", function(e) {
   }
 });
 ```
+{{% /answer %}}
 
 > Can you remove an event handler from an element?
 
+{{% answer %}}
 **Answer:** `target.removeEventListener('click', <handledName>)`
+{{% /answer %}}
 
 > How could you prevent a click on an anchor from going to the link? How could you stop further propagation of an event?
 
+{{% answer %}}
 **Answer:** `preventDefault()` inside event handler. However, this doesn't stop further propagation. To stop it `event.stopPropagation();`
+{{% /answer %}}
 
 > How to capture all click in a page?
 
+{{% answer %}}
 **Answer:** You can leverage event bubble to get all the clicks. As all the clicks will be bubbled up to the body.
 
 ```javascript
@@ -1033,11 +1143,13 @@ window.onclick = function(e){
   console.log('someone clicked', e.target)
 }
 ```
+{{% /answer %}}
 
 ### AJAX
   
 > Explain AJAX in as much detail as possible
 
+{{% answer %}}
 **Answer:** AJAX is a way to communicate to the server without reloading the page. Once we receive the data from the server, we can then manipulate those data and display unto certain parts of the page, this is why we don’t need to reload the page.
 
 **Explanation:** AJAX stands for Asynchronous JavaScript and XML. In a nutshell, it is the use of the `XMLHttpRequest` object to communicate with server-side scripts. It can send as well as receive information in a variety of formats, including JSON, XML, HTML, and even text files. AJAX’s most appealing characteristic, however, is its "asynchronous" nature, which means it can do all of this without having to refresh the page
@@ -1045,9 +1157,11 @@ window.onclick = function(e){
 Typical example for GET request with `XMLHttpRequest`:
 
 <script src="https://gist.github.com/qetr1ck-op/f52380392d7f0afb4835f8257a483ff7.js"></script>
+{{% /answer %}}
 
 > What is COMET? How to achieve this technique?
 
+{{% answer %}}
 **Answer:** he AJAX - is a "request sent - get the result," and the COMET - is "a continuous channel through which the data come."
 
 **Explanation:**
@@ -1066,13 +1180,17 @@ COMET techniques overview:
 * Long poll: A method by which a client opens a connection and doesn't close it up until the event occurs. In the event occurs, the client receives a notification and then opens a connection again.
 * "Infinite" iframe: The method is based on html document download features. It creates an invisible iframe, which reads "infinite" file. When an event occurs, a new row is added to the file. The string can be a javascript snippet.
 * HTML5 WebSockets: specification defines an API establishing "socket" connections between a web browser and a server. In plain words: There is an persistent connection between the client and the server and both parties can start sending data at any time.
+{{% /answer %}}
 
 > How to work with HTTP headers in AJAX. Do we have a restriction?
 
+{{% answer %}}
 **Answer:** There are three methods `setRequestHeader(name, value)`, `getResponseHeader(name)`, `getAllResponseHeaders()`
+{{% /answer %}}
 
 > Send JSON Object with Ajax?
 
+{{% answer %}}
 **Answer:** Use `xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")` and `JSON.stringify(<object>)`;
 
 ```javascript
@@ -1083,9 +1201,11 @@ xhr.open("POST", "/submit");
 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 xhr.send(json_upload);
 ```
+{{% /answer %}}
 
 > Sending POST data using an XMLHttpRequest using different encoding patterns.
 
+{{% answer %}}
 **Answer:** With `XMLHttpRequest` we don't need explicitly set header with `Content-type`.
 
 In spec are 3 types for submitting body entity:
@@ -1129,19 +1249,25 @@ With `multipart/form-data`:
   xhr.send(formData);
 </script>
 ```
+{{% /answer %}}
 
 > What is CORS? What techniques you know to avoid it?
+
+{{% answer %}}{{% /answer %}}
 
 ## ES6
 
 > When standard was finalized?
 
+{{% answer %}}
 The ES6 specification was finalized in June 2015, (hence ES2015).
 
 Future versions of the specification will follow the ES[YYYY] pattern, e.g ES2016 for ES7.
+{{% /answer %}}
 
 > Tooling
 
+{{% answer %}}
 To get ES6 working today, you need a JavaScript-to-JavaScript transpiler:
 
 * They allow you to compile code in the latest version into older versions of the language
@@ -1156,36 +1282,67 @@ Use `babelify` to incorporate babel into your `Gulp`, `Grunt`, or `npm` run buil
 Use `Node.js` v4.x.x or greater as they have decent ES6 support baked in, thanks to v8
 
 Use `babel-node` with any version of node, as it transpiles modules into ES5
+{{% /answer %}}
 
 > Assignment Destructing, the Rapid Table
 
+{{% answer %}}{{% /answer %}}
+
 > Spread Operator and Rest Parameters
+
+{{% answer %}}{{% /answer %}}
 
 > Arrow Functions
 
+{{% answer %}}{{% /answer %}}
+
 > Template Literals
+
+{{% answer %}}{{% /answer %}}
 
 > Object Literals
 
+{{% answer %}}{{% /answer %}}
+
 > Classes
+
+{{% answer %}}{{% /answer %}}
 
 > Let and Const
 
+{{% answer %}}{{% /answer %}}
+
 > Symbols
+
+{{% answer %}}{{% /answer %}}
 
 > Iterators
 
+{{% answer %}}{{% /answer %}}
+
 > Generators
+
+{{% answer %}}{{% /answer %}}
 
 > Promises
 
+{{% answer %}}{{% /answer %}}
+
 > Maps / WeakMaps
+
+{{% answer %}}{{% /answer %}}
 
 > Sets / WeakSets
 
+{{% answer %}}{{% /answer %}}
+
 > Modules
 
+{{% answer %}}{{% /answer %}}
+
 > Proxy
+
+{{% answer %}}{{% /answer %}}
 
 TODO with https://ponyfoo.com/articles/es6
 
@@ -1193,6 +1350,7 @@ TODO with https://ponyfoo.com/articles/es6
 
 > What do you think of AMD vs CommonJS and ES6 modules?
 
+{{% answer %}}
 **Answer:**
 
 For many years JS had a single widely accepted module format, which is to say, there was none. Everything was a global variable petulantly hanging off the window object. 
@@ -1214,9 +1372,11 @@ module.exports = something
 ```
 
 JavaScript vendors and concerned citizens began formally standardizing modules into the language proper. After years of thrashing, a standard module format has finally emerged with ES6.
+{{% /answer %}}
 
 > What is asynchronous programming, and why is it important in JS? Non-blocking I/O in JS.
 
+{{% answer %}}
 Synchronous programming means that code is executed sequentially from top-to-bottom, blocking on long-running tasks such as network requests and disk I/O.
 
 Asynchronous programming means that the engine runs in an event loop. When a blocking operation is needed, the request is started, and the code keeps running without blocking for the result. When the response is ready, an interrupt is fired, which causes an event handler to be run, where the control flow continues. In this way, a single program thread can handle many concurrent operations.
@@ -1244,9 +1404,11 @@ console.log('Done!');
 1. The request function is executed, passing an anonymous function as a callback to execute when a response is available sometime in the future.
 2. “Done!” is immediately output to the console
 3. Sometime in the future, the response comes back and our callback is executed, outputting its body to the console
+{{% /answer %}}
 
 > Do request two parallel request to `http://httpbin.org/ip` and `http://httpbin.org/user-agent`.
 
+{{% answer %}}
 **Answer:**
 
 ```js
@@ -1256,9 +1418,11 @@ Promise.all([fetch('http://httpbin.org/ip'), fetch('http://httpbin.org/user-agen
   })
   .then((jsons) => console.log(jsons))
 ```
+{{% /answer %}}
 
 > Resolve promises one after another (i.e. in sequence)?
 
+{{% answer %}}
 **Answer:**
 
 ```js
@@ -1300,9 +1464,11 @@ urls
     console.log(results);
   });
 ```
+{{% /answer %}}
 
 > The Event Loop
 
+{{% answer %}}
 The decoupling of the caller from the response allows for the JavaScript runtime to do other things while waiting for your asynchronous operation to complete and their callbacks to fire. But where in memory do these callbacks live – and in what order are they executed? What causes them to be called?
 
 JavaScript runtimes contain a message queue which stores a list of messages to be processed and their associated callback functions. These messages are queued in response to external events (such as a mouse being clicked or receiving the response to an HTTP request) given a callback function has been provided. If, for example a user were to click a button and no callback function was provided – no message would have been enqueued.
@@ -1310,9 +1476,11 @@ JavaScript runtimes contain a message queue which stores a list of messages to b
 In a loop, the queue is polled for the next message (each poll referred to as a “tick”) and when a message is encountered, the callback for that message is executed.
 
 ![Event Loop](http://www.appsdev.is.ed.ac.uk/blog/wp-content/uploads/2015/03/Event-loop.png)
+{{% /answer %}}
 
 > Macrotasks and Microtasks
 
+{{% answer %}}
 Take this little bit of JavaScript:
 
 ```js
@@ -1373,9 +1541,11 @@ macrotasks: `setTimeout`, `setInterval`, `setImmediate`, I/O, UI rendering
 microtasks: `process.nextTick`, `Promises`, `Object.observe`, `MutationObserver`
 
 [A great post](https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/).
+{{% /answer %}}
 
 > What is the difference between "classical inheritance" and "prototypal inheritance"?
 
+{{% answer %}}
 Class Inheritance: instances inherit from classes (like a blueprint — a description of the class), and create sub-class relationships: hierarchical class taxonomies. Instances are typically instantiated via constructor functions with the `new` keyword. Class inheritance may or may not use the `class` keyword from ES6.
 
 Prototypal Inheritance: instances inherit directly from other objects. Instances are typically instantiated via factory functions or `Object.create()`. Instances may be composed from many different objects, allowing for easy selective inheritance.
@@ -1383,9 +1553,11 @@ Prototypal Inheritance: instances inherit directly from other objects. Instances
 Good to hear:
 * Classes: create tight coupling or hierarchies/taxonomies.
 * Prototypes: mentions of concatenative inheritance, prototype delegation, functional inheritance, object composition.
+{{% /answer %}}
 
 > What are the pros and cons of functional programming vs object-oriented programming?
 
+{{% answer %}}
 OOP Pros: It’s easy to understand the basic concept of objects and easy to interpret the meaning of method calls. OOP tends to use an imperative style rather than a declarative style, which reads like a straight-forward set of instructions for the computer to follow.
 
 OOP Cons: OOP Typically depends on shared state. Objects and behaviors are typically tacked together on the same entity, which may be accessed at random by any number of functions with non-deterministic order, which may lead to undesirable behavior such as race conditions.
@@ -1394,9 +1566,11 @@ FP Pros: Using the functional paradigm, programmers avoid any shared state or si
 
 FP Cons: Over exploitation of FP features such as point-free style and large compositions can potentially reduce readability because the resulting code is often more abstractly specified, more terse, and less concrete.
 More people are familiar with OO and imperative programming than functional programming, so even common idioms in functional programming can be confusing to new team members.
+{{% /answer %}}
 
 > What does "favor object composition over class inheritance" mean?
 
+{{% answer %}}
 This is a quote from "Design Patterns: Elements of Reusable Object-Oriented Software". 
 
 Object composition is a way to combine simple objects or data types into more complex ones. It means that code reuse should be achieved by assembling smaller units of functionality into new objects instead of inheriting from classes and creating object taxonomies.
@@ -1413,9 +1587,11 @@ composedObject = Object.assign({}, a, b, c);
 * Avoid tight coupling.
 * Avoid rigid taxonomy (forced is-a relationships that are eventually wrong for new use cases).
 * Avoid the gorilla banana problem (“what you wanted was a banana, what you got was a gorilla holding the banana, and the entire jungle”).
+{{% /answer %}}
 
 > What are two-way data binding and one-way data flow, and how are they different?
 
+{{% answer %}}
 Two way data binding means that UI fields are bound to model data dynamically such that when a UI field changes, the model data changes with it and vice-versa.
 
 One way data flow means that the model is the single source of truth. Changes in the UI trigger messages that signal user intent to the model (or “store” in React). Only the model has the access to change the app’s state. The effect is that data always flows in a single direction, which makes it easier to understand.
@@ -1425,9 +1601,11 @@ One way data flows are deterministic, whereas two-way binding can cause side-eff
 **Good to hear:**
 React is the new canonical example of one-way data flow, so mentions of React are a good signal. Cycle.js is another popular implementation of uni-directional data flow.
 Angular is a popular framework which uses two-way binding.
+{{% /answer %}}
 
 > What are the pros and cons of monolithic vs microservice architectures?
 
+{{% answer %}}
 A monolithic architecture means that your app is written as one cohesive unit of code whose components are designed to work together, sharing the same memory space and resources.
 
 A microservice architecture means that your app is made up of lots of smaller, independent applications capable of running in their own memory space and scaling independently from each other across potentially many separate machines.
@@ -1447,7 +1625,7 @@ Microservice pros: Microservice architectures are typically better organized, si
 They can also have performance advantages depending on how they’re organized because it’s possible to isolate hot services and scale them independent of the rest of the app.
 
 Microservice cons: As you’re building a new microservice architecture, you’re likely to discover lots of cross-cutting concerns that you did not anticipate at design time. A monolithic app could establish shared magic helpers or middleware to handle such cross-cutting concerns without much effort.
-
+{{% /answer %}}
 
 ## Markup
 
@@ -1455,6 +1633,7 @@ Microservice cons: As you’re building a new microservice architecture, you’r
 
 > What is doctype? Why do u need it?
 
+{{% answer %}}
 **Answer:** `doctype` is an instruction to the browser to inform about the version of html document and how browser should render it.
 
 **Explanation:** 
@@ -1465,55 +1644,71 @@ It ensures how element should be displayed on the page by most of the browser. A
 <!DOCTYPE html>
 <meta charset="UTF-8">
 ```
+{{% /answer %}}
 
 > Difference between standard/strict mode and quirks mode?
 
+{{% answer %}}
 **Answer:** quirks mode in browser allows u to render page for as old browsers. This is for backward compatibility.
+{{% /answer %}}
 
 > What is the use of `data-` attribute?
 
+{{% answer %}}
 **Answer:** allow you to store extra information/data in the DOM and allows to write valid html with embedded private data. You can easily access data attribute by using JS.
 
 ```html
 <div id="myDiv" data-user="jsDude" data-list-size="5" data-maxage="180"></div>
 ```
+{{% /answer %}}
 
 > What is the difference between `span` and `div`?
 
+{{% answer %}}
 **Answer:** `div` is a block element, `span` is inline.
 
 This means that to use them semantically, divs should be used to wrap sections of a document, while spans should be used to wrap small portions of text, images, etc.
+{{% /answer %}}
 
 >  When should you use section, div or article?
 
+{{% answer %}}
 **Answer:** To decide which of these three elements is appropriate, choose the first suitable option:
 
 1. Would the enclosed content would make sense on it’s own in a feed reader? If so use `<article>`
 2. Is the enclosed content related? If so use `<section>`
 3. Finally if there’s no semantic relationship use `<div>`
+{{% /answer %}}
 
 > What is "Semantic HTML?"
 
+{{% answer %}}
 **Answer:** Semantic HTML is a coding style where the tags embody what the text is meant to convey.
 
 **Explanation:** 
 
 In Semantic HTML, tags like `<b></b>` for bold, and `<i></i>` for italic should not be used, reason being they just represent formatting, and provide no indication of meaning or structure. The semantically correct thing to do is use `<strong></strong>` and `<em></em>`. These tags will have the same bold and italic effects, while demonstrating meaning and structure (emphasis in this case).
+{{% /answer %}}
 
 > What are some new HTML5 markup elements?
 
+{{% answer %}}
 **Answer:**
 
 There are [several](https://www.w3.org/TR/html-markup/bdi.html#bdi): `<article>, <aside>, <bdi>, <command>, <details>, <figure>, <figcaption>, <summary>, <header>, <footer>, <hgroup>, <mark>, <meter>, <nav>, <progress>, <ruby>, <rt>, <section>, <time>, <wpr>`.
+{{% /answer %}}
 
 > What are the new media-related elements in HTML5?
 
+{{% answer %}}
 **Answer:** 
 
 HTML5 has strong support for media. There are now special `<audio>` and `<video>` tags. There are additional A/V support tags as well: `<embed>` is a container for 3rd party applications.
+{{% /answer %}}
 
 > What is the difference between `SVG` and `Canvas`?
 
+{{% answer %}}
 **Answer:** 
 
 * `SVG` is a document format for scalable vector graphics.
@@ -1544,30 +1739,38 @@ Canvas:
 * Modified through script only
 * Event model/user interaction is granular (x,y)
 * Performance is better with smaller surface, a larger number of objects (>10k), or both
+{{% /answer %}}
 
 > Describe the difference between `cookies`, `sessionStorage`, and `localStorage`
 
+{{% answer %}}
 **Answer:** `localStorage`, `sessionStorage` and `cookies` are all client storage solutions.
 
 Cookies are small text files that websites place in a browser for tracking or login purposes. Meanwhile, `localStorage` and `sessionStorage` are new objects, both of which are storage specifications but vary in scope and duration. Of the two, `localStorage` is permanent and website-specific whereas `sessionStorage` only lasts as long as the duration of the longest open tab.
 
-You can save to `localStorage` and `sessionStorage` only primitives, for object you need you use `JSON.stringify1`
+You can save to `localStorage` and `sessionStorage` only primitives, for object you need you use `JSON.stringify`
+{{% /answer %}}
 
 ### CSS
-
 ## General Website Optimization Questions
 
 > How do you optimize a website’s assets?
 
+{{% answer %}}
 **Answer:** There are a [number of answers](https://www.sitepoint.com/web-site-optimization-steps/) to this question: File concatenation, file compression, CDN Hosting, offloading assets, re-organizing and refining code, etc.
+{{% /answer %}}
 
 > What are ways to reduce page load time?
 
+{{% answer %}}
 **Answer:** Again there are [many answers](https://blog.crazyegg.com/2013/12/11/speed-up-your-website/) here: Reduce image sizes, remove unnecessary widgets, HTTP compression, put CSS at the top and script references at the bottom or in external files, reduce lookups, minimize redirects, caching, etc.
+{{% /answer %}}
 
 > What kind of things must you be wary of when design or developing for multilingual sites?
 
+{{% answer %}}
 **Answer:** Another problem with [many solutions](https://www.nomensa.com/blog/2010/7-tips-for-multi-lingual-website-accessibility): setting the default language, using Unicode encoding, using the `lang` attribute, being aware of standard font sizes and text direction, and language word length (may affect layout).
+{{% /answer %}}
 
 # Technologies
 
@@ -1577,6 +1780,7 @@ You can save to `localStorage` and `sessionStorage` only primitives, for object 
 
 > List at least three ways to communicate between modules of your application using core AngularJS functionality.
 
+{{% answer %}}
 **Answer:** There are at least three idiomatic way to achieve this:
 
 * Using services
@@ -1584,9 +1788,11 @@ You can save to `localStorage` and `sessionStorage` only primitives, for object 
 * Directly between controllers, using `ControllerAs`, or other forms of inheritance
 * By assigning models on `$rootScope`
 * Directly between controllers, using `$parent`, `$$childHead`, `$$nextSibling`, etc.
+{{% /answer %}}
 
 > Which means of communication between modules of your application are easily testable?
 
+{{% answer %}}
 **Answer:** The big deal is in DI pattern.
 
 Using a `service` is definitely easy to test. Services are injected, and in a test either a real `service` can be used or it can be mocked.
@@ -1594,15 +1800,19 @@ Using a `service` is definitely easy to test. Services are injected, and in a te
 Events can be tested. In unit testing controllers, they usually are instantiated. For testing events on `$rootScope`, it must be injected into the test.
 
 For testing direct `communication` between `controller`s, the expected results should probably be mocked. Otherwise, controllers would need to be manually instantiated to have the right context.
+{{% /answer %}}
 
-> The most popular e2e testing tool for AngularJS is Protractor. Describe how e2e testing of AngularJS applications work?
+> The most popular e2e testing tool for AngularJS is Protractor. Describe how e2e testing of AngularJS 
+{{% answer %}}applications work?
 
 The e2e tests are executed against a running app, that is a fully initialized system. They most often spawn a browser instance and involve the actual input of commands through the user interface. The written code is evaluated by an automation program, such as a Selenium server (webdriver). That program sends commands to a browser instance, then evaluates the visible results and reports back to the user.
 
 The assertions are handled by another library, for Protractor (end-to-end) / Karma (unit tests) the default is Jasmine.
+{{% /answer %}}
 
 > What are the basic steps to unit test an AngularJS filter?
 
+{{% answer %}}
 1. Inject the module that contains the filter.
 2. Provide any mocks that the filter relies on.
 3. Get an instance of the filter using $filter('yourFilterName').
@@ -1640,9 +1850,11 @@ describe('Filter: myFltr', function () {
   });
 });
 ```
+{{% /answer %}}
 
 > When a scope is terminated, “destroy” events are fired. What are they used for, and why are there two?
 
+{{% answer %}}
 The first one is an AngularJS event, “$destroy” can be used by AngularJS scopes where they are accessible, such as in controllers or link functions.
 
 ```javascript
@@ -1662,9 +1874,11 @@ element.on(‘$destroy’, function () {
   // angular.element(document.body).off(‘someCustomEvent’);
 });
 ```
+{{% /answer %}}
 
 > How do you reset a `$timeout`, and disable a `$watch()`?
 
+{{% answer %}}
 **Answer:** The key to both is assigning the result of the function to a variable.
 
 To cleanup the timeout, just `.cancel()` it:
@@ -1688,9 +1902,11 @@ var deregisterWatchFn = $rootScope.$watch(‘someGloballyAvailableProperty’, f
   }
 });
 ```
+{{% /answer %}}
 
 > Name and describe the phases of a directive definition function execution, or describe how directives are instantiated.
 
+{{% answer %}}
 Each directive undergoes something similar to a life cycle as AngularJS compiles and links the DOM. The directive lifecycle begins and ends within the AngularJS bootstrapping process, before the page is rendered. 
 
 In a directive’s life cycle, there are four distinct functions that can execute if they are defined. Each enables the developer to control and customize the directive at different points of the life cycle.
@@ -1738,21 +1954,27 @@ Commonly, not all of the functions are needed. In most circumstances, developers
 ```
 
 More [here](https://www.toptal.com/angular-js/angular-js-demystifying-directives).
+{{% /answer %}}
 
 > How does interpolation, e.g. `{% raw %}{{ someModel }}{% endraw %}`, actually works?
 
+{{% answer %}}
 During the compilation process the `compiler` uses the `$interpolate` service to see if text nodes and element attributes contain interpolation markup with embedded expressions.
 
 If that is the case, the compiler adds watches on the computed interpolation function, which will update the corresponding text nodes or attribute values as part of the normal digest cycle.
+{{% /answer %}}
 
 > How does the digest phase work?
 
+{{% answer %}}
 In a nutshell, on every digest cycle all scope models are compared against their previous values. That is dirty checking. If change is detected, the watches set on that model are fired. Then another digest cycle executes, and so on until all models are stable.
 
 As long as core directives are used, we don’t need to worry, but when external code changes models the digest cycle needs to be called manually. Usually to do that, `$apply()`, `$digest()`, `$timeout()`, `$evalAsync()`.
+{{% /answer %}}
 
 > List a few ways to improve performance in an AngularJS app
 
+{{% answer %}}
 The first one can be enabled through the `$compileProvider`:
 
 ```javascript
@@ -1782,30 +2004,38 @@ That’s it! If the application now receives multiple `$http` responses at aroun
 * Once timed out, the queue is flushed and the actual` $apply` is triggered
 
 The `setTimeout()` is called with a 0 delay which causes an actual delay of around 10 milliseconds depending on the browser. That means, if our three asynchronous calls return at around the same time (somewhere inside that particular timeout delay), they get resolve with a single `$digest` cycle instead of three which speeds up our application.
+{{% /answer %}}
 
 > What is $rootScope and how does it relate to $scope?
 
+{{% answer %}}
 `$rootScope` is the parent object of all `$scope` Angular objects created in a web page.
+{{% /answer %}}
 
 > What is the difference between "ng-show"/"ng-hide" and "ng-if" directives?
 
+{{% answer %}}
 `ng-show`/`ng-hide` will always insert the DOM element, but will display/hide it based on the condition. 
 
 `ng-if` will not insert the DOM element until the condition is not fulfilled.
 
 `ng-if` is better when we needed the DOM to be loaded conditionally, as it will help load page bit faster compared to `ng-show`/`ng-hide`
+{{% /answer %}}
 
 > Where should we implement the DOM manipulation in AngularJS?
 
+{{% answer %}}
 In the directives. DOM Manipulations should not exist in controllers, services or anywhere else but in directives.
 
 Otherwise it's:
 * It is not reusable
 * It is not testable
 * It include css hard coded selectors dependencies
+{{% /answer %}}
 
 > Is it a good or bad practice to use AngularJS together with jQuery?
 
+{{% answer %}}
 jQuery takes a traditional imperative approach to manipulating the DOM. In an imperative approach, it is up to the programmer to express the individual steps leading up to the desired outcome. What do I mean by this? So if we want an action to occur when a user types say 150 characters into an input, in jQuery we would say, "every time the user hits a key, check how many characters are in the input, if it exceeds 150 characters, do the action." Every step is addressed along the way.
 
 AngularJS however takes a declarative approach to DOM manipulation. Here instead of worrying about all of the step by step details regarding how to do the desired outcome, AngularJS abstracts that and allows you to just say what you want done, in this case, "AngularJS, when the state of the input is at 150 characters, do this." We are just declaring what we want and AngularJS worries about the rest, taking care of everything for us.
@@ -1813,32 +2043,42 @@ AngularJS however takes a declarative approach to DOM manipulation. Here instead
 It might seem like I'm just splitting hairs here, but it's really an important distinction. AngularJS wants you basing your actions around the data models you create. It's how the entire framework works and how your applications will be structured. 
 
 To simply begin writing side scripts in jQuery where you are plucking out elements and setting up side event listeners just goes against the AngularJS approach in my opinion.
+{{% /answer %}}
 
 > If you were to migrate from Angular 1.4 to Angular 1.5, what is the main thing that would need refactoring?
 
+{{% answer %}}
 Changing `.directive` to `.component` to adapt to the new Angular 1.5 components. More about [.component approach](http://qetr1ck-op.github.io/2016/07/22/Exploring-AngularJS-1-5-component-method/)
+{{% /answer %}}
 
 > Lifecycle hooks in Angular 1.5
 
+{{% answer %}}
 * `$onInit`
 * `$postLink`
 * `$onChanges`
 * `$onDestroy`
 
 More in [awesome post](https://toddmotto.com/angular-1-5-lifecycle-hooks).
+{{% /answer %}}
 
 > How would you specify that a scope variable should have one-time binding only?
 
+{{% answer %}}
 By using `::model.property` in front of it. This allows the check if the candidate is aware of the available variable bindings in AngularJS.
+{{% /answer %}}
 
 > What is the difference between one-way binding and two-way binding?
 
+{{% answer %}}
 One way binding implies that the scope variable in the html will be set to the first value its model is bound to (i.e. assigned to).
 
 Two way binding implies that the scope variable will change it’s value everytime its model is assigned to a different value
+{{% /answer %}}
 
 > What is the role of services in AngularJS and name any services made available by default?
 
+{{% answer %}}
 * Services are objects that provide separation of concerns to an AngularJS app.
 * Services can be created using a factory method or a service method.
 * Services are singleton components. All components of the application (into which the service is injected) will work with single instance of the service.
@@ -1849,9 +2089,11 @@ Few of the inbuilt services in AngularJS are:
 – the `$http` service: The `$http` service is a core Angular service that facilitates communication with the remote HTTP servers via the browser’s XMLHttpRequest object or via JSONP
 – the `$log` service: Simple service for logging. Default implementation safely writes the message into the browser’s console
 – the `$anchorScroll`: it scrolls to the element related to the specified hash or (if omitted) to the current value of `$location.hash()`
+{{% /answer %}}
 
 > What are Providers and when to use them?
 
+{{% answer %}}
 Each web application you build is composed of objects that collaborate to get stuff done. These objects need to be instantiated and wired together for the app to work. In Angular apps most of these objects are instantiated and wired together automatically by the `$injector` service.
 
 The `$injector` creates two types of objects, *services* and *specialized objects*.
@@ -1872,11 +2114,13 @@ You should use the Provider recipe only when you want to expose an API for appli
 The Provider recipe is syntactically defined as a custom type that implements a `$get` method. This method is a factory function just like the one we use in the Factory recipe. In fact, if you define a Factory recipe, an empty Provider type with the $get method set to your factory function is automatically created under the hood.
 
 More in [official docs](https://docs.angularjs.org/guide/providers).
+{{% /answer %}}
 
-## Angular
+### Angular
 
 > What are the possible ways to bind component properties to an associated template?
 
+{{% answer %}}
 The target of a data binding is something in the DOM. Depending on the binding type, the target can be an (`element | component | directive`) property, an (`element | component | directive`) event, or (rarely) an attribute name:
 
 * Property
@@ -1918,9 +2162,11 @@ The target of a data binding is something in the DOM. Depending on the binding t
 ```html
 <button [style.color]="isSpecial ? 'red' : 'green'">
 ```
+{{% /answer %}}
 
 > Property binding or interpolation, what is better?
 
+{{% answer %}}
 ```html
 <p><img src="{{heroImageUrl}}"> is the <i>interpolated</i> image.</p>
 <p><span>"{{title}}" is the <i>interpolated</i> title.</span></p>
@@ -1934,9 +2180,11 @@ When rendering data values as strings, there is no technical reason to prefer on
 You lean toward readability, which tends to favor interpolation. You suggest establishing coding style rules and choosing the form that both conforms to the rules and feels most natural for the task at hand.
 
 Only when setting an element property to a non-string data value, you must use property binding!
+{{% /answer %}}
 
 > How you detect Detect Component Input Changes?
 
+{{% answer %}}
 * You can use the `ngOnChanges()` lifecycle method:
 
 ```js
@@ -1967,29 +2215,37 @@ set name(name: string) {
 If your component has several inputs, then, if you use `ngOnChanges()`. Using this approach, you can also compare current and previous values of the input that has changed and take actions accordingly.
 
 However, if you want to do something when only a particular single input changes (and you don't care about the other inputs), then it might be simpler to use an input property `setter`.
+{{% /answer %}}
 
 > Angular change detection may still not fire under some circumstances. Why?
 
+{{% answer %}}
 * Normally, change detection for both `setter` and `ngOnChanges()` will fire whenever the parent component changes the data it passes to the child, provided that the data is a JS primitive datatype(`string`, `number`, `boolean`).
 
 * If you are mutating data outside of the angular context (i.e., externally), then angular will not know of the changes. You may have to use `ChangeDetectorRef` or `NgZone` in your component for making angular aware of external changes and thereby triggering change detection. Refer to this.
+{{% /answer %}}
 
 > Why we need `NgModules`?
 
+{{% answer %}}
 The purpose of a `NgModule` is to declare each thing you create in Angular. There is two kind of main structures:
 
 * `declarations` is for things you’ll use in your templates : mainly components (~ views : the classes displaying data), but also directives and pipes;
 * `providers` is for services (~ models : the classes getting and handling data).
+{{% /answer %}}
 
 >  What kind of classes can you import (meta) in an angular module?
 
+{{% answer %}}
 * Import modules whose public (exported) `declarations` classes you need to reference in this module's component templates.
 * This always means importing `CommonModule` from `@angular/common` for access to the Angular directives such as NgIf and NgFor. You can import it directly or from another module that re-exports it.
 * Import `FormsModule` from `@angular/forms` if your components have `[(ngModel)]` two-way binding expressions.
 * Import shared and feature modules when this module's components incorporate their components, directives, and pipes.
+{{% /answer %}}
 
 > `NgModule` and scopes / visibility ?
 
+{{% answer %}}
 `declarations` and `providers` not having the same scope / visibility:
 
 * `declarations` / `components` / `pipes` are in local scope (private visibility)
@@ -2014,9 +2270,11 @@ export class SomeModule {}
 ```
 
 On the contrary, `services` you provided will be available / injectable anywhere in your app, in all modules.
+{{% /answer %}}
 
 > What are template reference variables and how are they different from variables in classes?
 
+{{% answer %}}
 A template reference variable is often a reference to a DOM element within a template. It can also be a reference to an Angular component or directive. You can refer to a template reference variable anywhere in the template:
 
 ```html
@@ -2043,9 +2301,11 @@ The following is a simplified version of the form example in the Forms guide:
 ```
 
 If Angular hadn't taken it over when you imported the `FormsModule`, it would be the `HTMLFormElement`. The `heroForm` is actually a reference to an Angular `NgForm` directive with the ability to track the value and validity of every control in the form.
+{{% /answer %}}
 
 > How do you define optional fields in a TypeScript class?
 
+{{% answer %}}
 Using the "Parameter propeties":
 
 ```js
@@ -2053,9 +2313,11 @@ class Test {
   constructor(public a: string, public b: string, public c?: string){}
 }
 ```
+{{% /answer %}}
 
 > What's the difference between a TypeScript class and an interface?
 
+{{% answer %}}
 1. The only job of an interface in TypeScript is to describe a type. While class and function deal with implementation. Class is built upon concept of low-level language: Inheritance, abstract class, accessors, modifier and [some others](http://www.typescriptlang.org/docs/handbook/classes.html).
 
 2. Interface’s job is define "shape" of objects, helps us keep our programs error-free by providing information about the shape. While they don’t generate any code (and thus have no runtime cost!), they are often the key point of contact between any two pieces of TypeScript code:
@@ -2127,9 +2389,11 @@ class Clock implements ClockInterface {
   constructor(h: number, m: number) { }
 }
 ```
+{{% /answer %}}
 
 > What’s the difference between a promise and Observable?
 
+{{% answer %}}
 Both `Promises` and `Observables` provide us with abstractions that help us deal with the asynchronous nature of our applications.
 
 * Promise
@@ -2147,9 +2411,11 @@ Both `Promises` and `Observables` provide us with abstractions that help us deal
 5. an array whose items arrive asynchronously over time
 
 [more](https://stackoverflow.com/questions/37364973/angular-promise-vs-observable)
+{{% /answer %}}
 
 > How do you use a TypeScript and JavaScript (Non TypeScript) third party lib in an Angular 2 App?
 
+{{% answer %}}
 For TypeScript libs:
 
 1. Installing `npm i lodash`
@@ -2190,17 +2456,21 @@ declare module “shave” {
 "files": ["typings/shave.d.ts"]
 ```
 5. Import and use
+{{% /answer %}}
 
 > Why are components not marked with @injectable annotation, but services need to be?
 
+{{% answer %}}
 Injectors are also responsible for instantiating components like `HeroesComponent`. So why doesn't `HeroesComponent` have `@Injectable()`?
 
 You can add it if you really want to. It isn't necessary because the `HeroesComponent` is already marked with` @Component`, and this decorator class (like `@Directive` and `@Pipe`) is a subtype of `@Injectable()`. It is in fact `@Injectable()` decorators that identify a class as a target for instantiation by an injector.
 
 [More](https://angular.io/guide/dependency-injection#why-injectable)
+{{% /answer %}}
 
 > Lifecycle Hooks, when and why?
 
+{{% answer %}}
 Directive and component instances have a lifecycle as Angular creates, updates, and destroys them. Developers can tap into key moments in that lifecycle by implementing one or more of the lifecycle hook interfaces in the Angular core library.
 
 1. `constructor()` - is called before any other component lifecycle hook. If our component is based on any dependencies, the constructor is the best place to inject those dependencies
@@ -2214,9 +2484,11 @@ Directive and component instances have a lifecycle as Angular creates, updates, 
 9. `ngOnDestroy()` - Cleanup just before Angular destroys the directive/component. Unsubscribe Observables and detach event handlers to avoid memory leaks.
 
 [Demo](http://plnkr.co/edit/kBHV6AximaHAC26kYEOA?p=preview)
+{{% /answer %}}
 
 > Parent child communication. Component interaction.
 
+{{% answer %}}
 * Pass data from parent to child with input binding via `@Input` decorator
 * Intercept input property changes with a `setter`
 * Intercept input property changes with `ngOnChanges()`
@@ -2226,9 +2498,11 @@ Directive and component instances have a lifecycle as Angular creates, updates, 
 * Parent and children communicate via a service
 
 [More](https://angular.io/guide/component-interaction#parent-and-children-communicate-via-a-service)
+{{% /answer %}}
 
 > What is the proper use of an `EventEmitter`? How does the event emitter work in Angular 2?
 
+{{% answer %}}
 `EventEmitter` is really an Angular abstraction, and should be used pretty much only for emitting custom Events in components. Otherwise, just use `Rx` as if it was any other library.
 
 ```js
@@ -2259,9 +2533,11 @@ class Parent {
 ```
 
 Unlike DOM events Angular custom events do not bubble.
+{{% /answer %}}
 
 > How to make sure that single instance will be used in an entire application?
 
+{{% answer %}}
 With `NgModule`, the way to do it now I think is to create a `'CoreModule'` with your service class in it, and list the service in the module's providers. Then you import the core module in your main app module which will provide the one instance to any children requesting that class in their constructors:
 
 A service provided in the `app-module` will have the same instance provided everywhere:
@@ -2304,9 +2580,11 @@ import { CoreModule } from './core/core.module';
 })
 export class AppModule { }
 ```
+{{% /answer %}}
 
 > Why do we need to use another class with `useClass` or aliased providers with `useExisting`? When to use `useValue`?  When to use `useFactory`?
 
+{{% answer %}}
 * By default Angular will inject a provider with the same class name and token, but `useClass` allows to use a different class. For example, the following will provide a service with the Auth token, but the UserAuth class:
 
 ```js
@@ -2345,9 +2623,11 @@ providers: [{ provide: AuthConfig, useValue: AUTH_CONFIG }]
   }
 }
 ```
+{{% /answer %}}
 
 > What is the `trackBy` with `*ngFor` directive?
 
+{{% answer %}}
 The `NgFor` directive may perform poorly, especially with large lists. A small change to one item, an item removed, or an item added can trigger a cascade of DOM manipulations. For example, re-querying the server could reset the list with all new hero objects.
 
 Most, if not all, are previously displayed heroes. You know this because the id of each hero hasn't changed. But Angular sees only a fresh list of new object references. It has no choice but to tear down the old DOM elements and insert all new DOM elements.
@@ -2366,9 +2646,11 @@ trackByHeroes(index: number, hero: Hero): number { return hero.id; }
 ```
 
 [More](https://angular.io/guide/template-syntax#ngfor-with-trackby)
+{{% /answer %}}
 
 > How to get dom element?
 
+{{% answer %}}
 * You can get a handle to the DOM element via `ElementRef` by injecting it into your component's constructor:
 
 ```js
@@ -2438,15 +2720,19 @@ export class MasterPage {
   }
 }
 ```
+{{% /answer %}}
 
 > Manipulating DOM element. What is `Renderer2`?
 
+{{% answer %}}
 The `Renderer2` class is an abstraction provided by Angular in the form of a service that allows to manipulate elements of your app without having to touch the DOM directly. This is the recommended approach because it then makes it easier to develop apps that can be rendered in environments that don’t have DOM access, like on the server, in a web worker or on native mobile.
 
 [More](https://alligator.io/angular/using-renderer2/)
+{{% /answer %}}
 
 > How do you reference the host of a component? Have you used `@HostBinding` and `@HostListener` in custom directive?
 
+{{% answer %}}
 You get the host element reference using
 
 ```js
@@ -2471,19 +2757,25 @@ class MyComponent {
 `@HostBinding` and `@HostListener` are two decorators in Angular that can be really useful in custom directives. `@HostBinding` lets you set properties on the element or component that hosts the directive, and `@HostListener` lets you listen for events on the host element or component.
 
 [More](https://alligator.io/angular/hostbinding-hostlistener/)
+{{% /answer %}}
 
 > What types of pipes are supported in Angular 2?
 
+{{% answer %}}
 [The comparison](https://auth0.com/blog/angular2-series-working-with-pipes/)
 
 [The official table](https://angular.io/api?type=pipe)
+{{% /answer %}}
 
 > I18n?
 
+{{% answer %}}
 [Popular library](http://www.ngx-translate.com/)
+{{% /answer %}}
 
 > How hadnle not found page / 404 ?
 
+{{% answer %}}
 Just extend `@RouteConfig`:
 
 ```js
@@ -2500,9 +2792,11 @@ Or redirect to another router with addition info:
     {path:'/**', redirectTo: ['Home', {error: 'not found'}] }
 ])
 ```
+{{% /answer %}}
 
 > Why do we need an http interceptor? How to implement?
 
+{{% answer %}}
 Interceptors come in handy in multiple scenarios:
 
 1. Setting the Origin for each outgoing request.
@@ -2510,6 +2804,7 @@ Interceptors come in handy in multiple scenarios:
 3. Adding any custom header(s) that your application needs.
 
 [How to implement](https://scotch.io/@kashyapmukkamala/using-http-interceptor-with-angular2)
+{{% /answer %}}
 
 # Fundamentals
 
@@ -2517,6 +2812,7 @@ Interceptors come in handy in multiple scenarios:
 
 > Binary search
 
+{{% answer %}}
 A binary search tree is a great place to store data in an ordered way to allow for an easy search for specific information.
 It works by comparing the target value to the midpoint of the array; if they are not equal, the lower or upper half of the array is eliminated depending on the result and the search is repeated until the position of the target value is found.
 
@@ -2552,9 +2848,11 @@ function binarySearch(items, value){
     return (items[middle] != value) ? -1 : middle;
 }
 ```
+{{% /answer %}}
 
 > The fastest method to create unique items in array
 
+{{% answer %}}
 With primitive values:
 
 ```js
@@ -2587,9 +2885,11 @@ var a = [], l = this.length;
   }
   return a;
 ```
+{{% /answer %}}
 
 > The fastest method to find items in array
 
+{{% answer %}}
 Create a classical hash table with complexity of `O(n)`:
 
 ```js
@@ -2600,11 +2900,15 @@ var result = arr.reduce(function(map, obj) {
 ```
 
 And search in the structure is `O(1)`;
+{{% /answer %}}
 
 > Big-O Complexity Chart
 
+{{% answer %}}
 [An awesome cheat sheet](http://bigocheatsheet.com/)
 
 Save my day:
 
 * [10 Interview Questions Every JavaScript Developer Should Know](https://medium.com/javascript-scene/10-interview-questions-every-javascript-developer-should-know-6fa6bdf5ad95#.qwihvpqxq)
+
+{{< interview >}}
