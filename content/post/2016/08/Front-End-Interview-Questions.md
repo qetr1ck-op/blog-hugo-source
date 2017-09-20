@@ -2588,13 +2588,13 @@ export class AppModule { }
 * By default Angular will inject a provider with the same class name and token, but `useClass` allows to use a different class. For example, the following will provide a service with the Auth token, but the UserAuth class:
 
 ```js
-providers: [{ provide: Auth, useClass: UserAuth }]
+providers: [{ provide: Auth, useClass: UserAuth }] // app.service() in ng1
 ```
 
 * If you want to alias an old provider to be handled by a new provider, you can do so with `useExisting`. This would be useful if, for example, a component needs to be still be using the old provider, but the logic should still be handled by the new provider:
 
 ```js
-providers: [{ provide: OldService, useExisting: NewService }]
+providers: [{ provide: OldService, useExisting: NewService }] 
 ```
 
 * Most of the time classes are used as providers, but simple values can also be used instead with useValue:
@@ -2605,12 +2605,13 @@ const AUTH_CONFIG = {
   authDomain: "..."
 };
 
-providers: [{ provide: AuthConfig, useValue: AUTH_CONFIG }]
+providers: [{ provide: AuthConfig, useValue: AUTH_CONFIG }] // app.constant() and app.value() in ng1
 ```
 
 * With `useFactory` you can configure a factory object based on other dependency inside function and before returning an instance of it. You can use `useFactory` to configure your dependency at configuration time. Its same as that of `config` phase Angular 1, where you are modifying or forming a dependency as you needed:
 
 ```js
+// app.factory() in ng1
 { 
   provide: 'CustomDependency',
   deps: [A, B]
