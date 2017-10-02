@@ -73,10 +73,10 @@ However, special case about `==` (not-strict equal) is that it will do some impl
 4. Finally, they are of same type, you are comparing `0 === 1` which will be `false`.
 {{% /answer %}}
 
-> Why `typeof bar === object` isn't right? How can this pitfall be avoided?
+> Why `typeof {} === 'object'` isn't right? How can this pitfall be avoided?
 
 {{% answer %}}
-**Answer:** Use `Object.prototype.toString.call(<object>)` or use Duck Typing.
+**Answer:** Use `(Object.prototype | {}).toString.call(<object>)` or use Duck Typing.
 
 **Explanation:** The surprising gotcha in JavaScript is that `null` is also considered an object!
 {{% /answer %}}
@@ -564,23 +564,6 @@ date.nextDay();//Sat May 17 2014 20:47:14 GMT-0500 (Central Daylight Time)
 ```
 {{% /answer %}}
 
-> Extend Core Object through prototype. Example 2. How could you make this work `[1,2,3,4,5].duplicator()` to return `[1,2,3,4,5,1,2,3,4,5]`?
-
-{{% answer %}}
-**Answer:** We need to add a method in the prototype of Array object.
-
-```js
-// ES5
-Array.prototype.duplicator = function(){
-  return this.concat(this);
-}
-
-Array.prototype.duplicator = function() {
-  return [...this, ...this];
-} 
-```
-{{% /answer %}}
-
 > Example. Make a subclass from parent class `Animal`
 
 {{% answer %}}
@@ -665,6 +648,23 @@ rabbit.run();
 ```
 {{% /answer %}}
 
+> Extend Core Object through prototype. Example 2. How could you make this work `[1,2,3,4,5].duplicator()` to return `[1,2,3,4,5,1,2,3,4,5]`?
+
+{{% answer %}}
+**Answer:** We need to add a method in the prototype of Array object.
+
+```js
+// ES5
+Array.prototype.duplicator = function(){
+  return this.concat(this);
+}
+
+Array.prototype.duplicator = function() {
+  return [...this, ...this];
+} 
+```
+{{% /answer %}}
+
 > Difference between: `function Person(){}`, `var person = Person()`, and `var person = new Person()`? What `new` operator do?
 
 {{% answer %}}
@@ -742,6 +742,7 @@ var bob = Object.create(userB, { // object descriptor
 
 {{% answer %}}
 **Answer:**
+
 * `window.onload` is fired when all page is loaded, including all resources (images, styles, iframes)
 * `document.onload` is fired when DOM (DOM tree built from markup code within the document) is ready which without external content.
 * `DOMContentLoaded` means that DOM has already been built, we can use handlers or search through the nodes, but resources such as images, styles don't be loaded yet
@@ -1253,7 +1254,9 @@ With `multipart/form-data`:
 
 > What is CORS? What techniques you know to avoid it?
 
-{{% answer %}}{{% /answer %}}
+{{% answer %}}
+[Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS)
+{{% /answer %}}
 
 ## ES6
 
@@ -1537,8 +1540,8 @@ promise 6
 ```
 To understand this you need to know how the event loop handles macrotasks and microtasks.
 
-macrotasks: `setTimeout`, `setInterval`, `setImmediate`, I/O, UI rendering
-microtasks: `process.nextTick`, `Promises`, `Object.observe`, `MutationObserver`
+* macrotasks: `setTimeout`, `setInterval`, `setImmediate`, I/O, UI rendering
+* microtasks: `process.nextTick`, `Promises`, `Object.observe`, `MutationObserver`
 
 [A great post](https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/).
 {{% /answer %}}
@@ -2624,6 +2627,8 @@ providers: [{ provide: AuthConfig, useValue: AUTH_CONFIG }] // app.constant() an
   }
 }
 ```
+
+[More](https://stackoverflow.com/questions/34986922/define-global-constants-in-angular-2/40287063#40287063)
 {{% /answer %}}
 
 > What is the `trackBy` with `*ngFor` directive?
