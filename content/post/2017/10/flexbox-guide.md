@@ -5,12 +5,11 @@ tags = []
 categories = [
     "CSS",
 ]
-
 +++
 
 Vocabulary of useful material regarding `flexbox` model.
 
-<!-- more -->
+<!--more-->
 
 # Everything what you need to know about flexbox
 
