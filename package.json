@@ -6,6 +6,7 @@
   "author": "qetr1ck <orestprustayko@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "start": "hugo server",
     "deploy": "bash scripts/gh-deploy.sh",
     "build:search": "hugo-lunr -o static/json/lunr.json"
   },
