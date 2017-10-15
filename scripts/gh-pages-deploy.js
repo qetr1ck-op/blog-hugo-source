@@ -9,7 +9,7 @@ const gitStatus = execSync('git status -s')
 
 if (gitStatus) {
    log('The working directory is dirty. Please commit any pending changes:')
-   console.log(gitStatus.toString())
+   console.log(gitStatus.toString().length)
    return;
 }
 
