@@ -11,7 +11,8 @@
     "build:search": "hugo-lunr -o static/json/lunr.json"
   },
   "devDependencies": {
-    "hugo-lunr": "0.0.4"
+    "hugo-lunr": "0.0.4",
+    "simple-git": "^1.80.1"
   },
   "dependencies": {
     "chalk": "^2.1.0",
