@@ -4,7 +4,7 @@ const chalk = require('chalk')
 const log = (str) => console.log(chalk.bgMagenta(str))
 const logNewLine = () => console.log('\n')
 
-log('💾 Checking git status')
+/* log('💾 Checking git status')
 const gitStatus = execSync('git status -s')
 
 if (gitStatus.length) {
@@ -37,4 +37,9 @@ try {
   execSync('git push origin master') 
 } catch (error) {
   log(error)
-}
+} */
+
+log('💾 Generating and commit lunr.json')
+execSync('yarn run build:search')
+execSync('git add --all && git commit -m "Update search content in lunr.json"')
+execSync('git push origin master')
