@@ -19,11 +19,11 @@ moveSync('./public/.git', './temp-public-git')
 emptyDirSync('./public')
 moveSync('./temp-public-git', './public/.git')
 
-logNewLine()
+/* logNewLine()
 log('💾 Generating and commit lunr.json')
 execSync('yarn run build:search')
 execSync('git add --all && git commit -m "Update search content in lunr.json"')
-execSync('git push origin master')
+execSync('git push origin master') */
 
 logNewLine()
 log('💾 Generating site')
