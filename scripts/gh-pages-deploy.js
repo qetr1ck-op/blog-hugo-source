@@ -7,9 +7,9 @@ const logNewLine = () => console.log('\n')
 log('💾 Checking git status')
 const gitStatus = execSync('git status -s')
 
-if (gitStatus) {
+if (gitStatus.length) {
    log('The working directory is dirty. Please commit any pending changes:')
-   console.log(gitStatus.toString().length)
+   console.log(gitStatus.toString())
    return;
 }
 
