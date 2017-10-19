@@ -12,8 +12,9 @@ async function main() {
   if (modifiedFiles.length) {
     log('The working directory is dirty. Please commit any pending changes:')
     console.log(modifiedFiles)
+    return
   }
-    
+
   logNewLine()
   log('💾 Clean old publication')
   moveSync('./public/.git', './temp-public-git')
