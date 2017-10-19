@@ -3,7 +3,7 @@ title = "Front End Interview Questions"
 date = "2016-08-14 11:39:13"
 categories = [
     "Javascript",
-    "NodeJS", 
+    "NodeJS",
     "OOP",
     "Architecture",
     "Patterns",
@@ -33,7 +33,7 @@ To rock the interview to achieve what you deserve and to improve your concepts a
 {{% answer %}}
 **Answer:** JavaScript has two distinct values for nothing, `null` and `undefined`. Also there are `undeclared` variables which don’t even exist.
 
-**Explanation:** 
+**Explanation:**
 
 ```js
 var declaredVariable = 1;
@@ -63,7 +63,7 @@ declaredVariable;
 {{% answer %}}
 **Answer:** Not.
 
-You are right about first part, `[]`, empty array is an object and object is always truths. 
+You are right about first part, `[]`, empty array is an object and object is always truths.
 
 However, special case about `==` (not-strict equal) is that it will do some implicit coercion.
 
@@ -178,7 +178,7 @@ const fn4 = function () {
 **Answer:** `fn4` function expression isn't hoisted. Change to function declaration. The result should be `fn2, fn4, fn3, fn1`
 {{% /answer %}}
 
-> What is a closure? What is a practical use for a closure? Provide an example. 
+> What is a closure? What is a practical use for a closure? Provide an example.
 
 {{% answer %}}
 **Answer:** Closure is a function with all accessible variables in lexical environment. Main usage is encapsulating data from outer usage.
@@ -213,17 +213,17 @@ If log the loop counter inside `setTimeout`, what will be logged?
 ```js
 for(var i = 0; i < 10; i++) {
   setTimeout(function() {
-    console.log(i);  
+    console.log(i);
   }, 0);
 }
 ```
 
 **Answer**: The above will not output the numbers 0 through 9, but will simply print the number 10 ten times.
 
-**Explanation**: 
+**Explanation**:
 
-1. The console log is inside the anonymous function of `setTimeout` and `setTimeout` is executed when current call stack is over. 
-2. So, the loop finishes and before setTimeout get the chance to execute. However, anonymous functions keep a reference to `i` by creating a closure. 
+1. The console log is inside the anonymous function of `setTimeout` and `setTimeout` is executed when current call stack is over.
+2. So, the loop finishes and before setTimeout get the chance to execute. However, anonymous functions keep a reference to `i` by creating a closure.
 3. Since, the loop is already finished, the value `i` has been set to `10`.
 
 You can fix it by avoiding closure. Just create a `IIFE` (Immediately Invoked Function Expression), it will create its own scope and you can pass i to the function. In that case i will be a local variable (will not refer to i in the closure) and value of the i in every loop will be preserved.
@@ -244,7 +244,7 @@ for(var i = 0; i < 10; i++) {
 // ES6
 for(let i = 0; i < 10; i++) {
   setTimeout(() => {
-    console.log(i);  
+    console.log(i);
   }, 10);
 }
 ```
@@ -272,10 +272,10 @@ function isFooPassed(...params) {
 
 {{% answer %}}
 ```js
-Math.max(...arr);  
+Math.max(...arr);
 
 //ES5 way
-//Math.max.apply(Math, arr);  
+//Math.max.apply(Math, arr);
 ```
 {{% /answer %}}
 
@@ -292,7 +292,7 @@ function log(){
   console.log.apply(console, args);
 }
 
-// ES6 
+// ES6
 function log(...params){
   console.log(['(app)', ...params]);
 }
@@ -327,7 +327,7 @@ const fibonacci = (() => {
 })();
 ```
 
-**Explanation:** 
+**Explanation:**
 
 Memoization is a programming technique which attempts to increase a function’s performance by caching its previously computed results. Because JavaScript objects behave like associative arrays, they are ideal candidates to act as caches. Each time a memoized function is called, its parameters are used to index the cache. If the data is present, then it can be returned, without executing the entire function.  However, if the data is not cached, then the function is executed, and the result is added to the cache.
 
@@ -375,7 +375,7 @@ Also will work with `!` and `+` operators:
 
 ```javascript
 +function() {
-  
+
 }();
 
 !function() {
@@ -384,7 +384,7 @@ Also will work with `!` and `+` operators:
 ```
 {{% /answer %}}
 
-### Objects 
+### Objects
 
 > What the heck is `this` in JavaScript?
 
@@ -413,7 +413,7 @@ There are at least four different ways to doing this by using `bind`, `call`, `a
 {{% answer %}}
 **Answer:** JavaScript has two different approaches for testing equality. Primitives like strings and numbers are compared by their value, while objects like arrays, dates, and user defined objects are compared by their reference. This means it compares whether two objects are referring to the same location in memory.
 
-Equality check will check whether two objects have same value for same property. To check that, you can get the keys for both the objects. 
+Equality check will check whether two objects have same value for same property. To check that, you can get the keys for both the objects.
 
 Use [lodash](https://www.npmjs.com/package/lodash.isequal) or any npm equivalent.
 
@@ -430,7 +430,7 @@ function isEqual(a, b) {
 
     for (var i = 0; i < aProps.length; i++) {
         var propName = aProps[i];
-        
+
         if (a[propName] !== b[propName]) {
             return false;
         }
@@ -533,7 +533,7 @@ console.log(child.surname) // 'Winchester'
 **Answer**
 
 ```js
-// 1. 
+// 1.
 Object.setPrototypeOf(child, parent);
 
 // 2.
@@ -556,9 +556,9 @@ const child = Object.assign({}, parent, child);
 ```js
 Date.prototype.nextDay = function () {
   return new Date(this.setDate(this.getDate() + 1));
-} 
+}
 
-const date = new Date(); 
+const date = new Date();
 date; //Fri May 16 2014 20:47:14 GMT-0500 (Central Daylight Time)
 date.nextDay();//Sat May 17 2014 20:47:14 GMT-0500 (Central Daylight Time)
 ```
@@ -661,7 +661,7 @@ Array.prototype.duplicator = function(){
 
 Array.prototype.duplicator = function() {
   return [...this, ...this];
-} 
+}
 ```
 {{% /answer %}}
 
@@ -720,7 +720,7 @@ var bob = Object.create(userB, { // object descriptor
 {{% answer %}}
 **Answer:**  Yes. JavaScript has a global `window` object and everything runs under it. `document` is a property of `window` object.
 
-**Explanation:** 
+**Explanation:**
 
 `window` is global object that holds global variables, global functions, location, history everything is under it. Besides, `setTimeout`, ajax call (`XMLHttpRequest`), `console` or `localStorage` are part of window.
 
@@ -750,10 +750,10 @@ var bob = Object.create(userB, { // object descriptor
 
 > Is `attribute` similar to `property`?
 
-{{% answer %}} 
+{{% answer %}}
 **Answer:** We operate with DOM-properties via JS. Attributes are part of HTML markup.
 
-**Explanation:** 
+**Explanation:**
 
 What is a property?
 
@@ -772,7 +772,7 @@ Attributes are in the HTML itself, rather than in the DOM. They are very similar
 
 > What are the different ways to get an element from DOM?
 
-{{% answer %}} 
+{{% answer %}}
 **Answer:** You can use the following methods in `document`:
 
 * `getElementById` to get a element that has the provided Id.
@@ -788,7 +788,7 @@ There are two more options but don't used frequently:
 * `getElementsByTagNameNS` returns elements with particular tag name within the provided namespace
 {{% /answer %}}
 
-> Fastest way to Query DOM: 
+> Fastest way to Query DOM:
 
 {{% answer %}}
 **Answer:** If you have an ID of an element `getElmentById` is the fastest way to select an element. However, you should not have so many ID in you document to avoid style repetition. `getElementsByClassName` is the second quickest way to select an element.
@@ -809,7 +809,7 @@ Here is the list. As we go downwards through the list, it takes more time to sel
 >  Why `querySelectorAll('.my-class')` is slower than `getElementsByClassName('my-class')`?
 
 {{% answer %}}
-**Answer:** `querySlectorAll` is a generic purpose method. It is optimized for different kinds of selectors. Hence it has to check whether you put a `"#"` or `"."` in front of the parameter you are passing. If you are just passing a class name with `"."`, under the hood it uses `getElementsByClassName` (could vary based on browser implements). Whereas if you directly uses `getElementsByClassName` it directly uses this method and doesn't have to go through all the initial processing of `querySelectorAll`. Hence to search elements with a particular class name, `getElementsByClassName` is faster than `querySelectorAll`.  
+**Answer:** `querySlectorAll` is a generic purpose method. It is optimized for different kinds of selectors. Hence it has to check whether you put a `"#"` or `"."` in front of the parameter you are passing. If you are just passing a class name with `"."`, under the hood it uses `getElementsByClassName` (could vary based on browser implements). Whereas if you directly uses `getElementsByClassName` it directly uses this method and doesn't have to go through all the initial processing of `querySelectorAll`. Hence to search elements with a particular class name, `getElementsByClassName` is faster than `querySelectorAll`.
 {{% /answer %}}
 
 > Why we can't use `forEach` or similar array methods on a `NodeList`? How could you solve this problem?
@@ -865,7 +865,7 @@ el.classList.contains('my-class'); // checking whether class exists
 
 > How to check if element isn't empty, without children?
 
-{{% answer %}} 
+{{% answer %}}
 ```javascript
 if (!elem.childNodes.length) { ... }
 
@@ -879,7 +879,7 @@ if (!elem.lastChild) { ... }
 
 > How you would perform next operation: create element with content, add `data-foo` attribute, append newly created element to whatever you want, then move it before some element, change text of it, remove it from DOM. How to clone an element?
 
-{{% answer %}} 
+{{% answer %}}
 **Answer:** Use the next methods `document.createElement(tag)`, `el.innerHTML`, `parent.appendChild(el)`, `parent.insertBefore(el, someEl)`, `parent.removeChild(el)`
 
 For clone an element we can create function or use `el.cloneNode(true)` where `true` means deep cloning.
@@ -888,7 +888,7 @@ For clone an element we can create function or use `el.cloneNode(true)` where `t
 > How to delete all children of element?
 
 {{% answer %}}
-**Answer:** 
+**Answer:**
 
 ```javascript
 function removeChildren(elem) {
@@ -914,7 +914,7 @@ function removeChildren(elem) {
 {{% answer %}}
 **Answer:** According to jsPerf option 1 is approximately 3 times slower than option 2.
 
-**Explanation:** 
+**Explanation:**
 
 `appendChild` does not cause a complete rebuild of the DOM or even all of the elements/nodes within the target.
 
@@ -1045,7 +1045,7 @@ How it happens:
 <script src="2.js" async></script>
 ```
 
-**Examples**: 
+**Examples**:
 
 ```html
 //1
@@ -1085,7 +1085,7 @@ To capture on `capture` phase need to `addEventListener(<eventName>, <cb>, true)
 {{% answer %}}
 **Answer:** Event delegation allows you to avoid adding event listeners to specific nodes, instead, the event listener is added to one parent. That event listener analyzes bubbled events to find a match on child elements.
 
-**Explanation:** 
+**Explanation:**
 
 Let's say that we have a parent UL element with several child elements:
 
@@ -1100,7 +1100,7 @@ Let's say that we have a parent UL element with several child elements:
 </ul>
 ```
 
-Let's also say that something needs to happen when each child element is clicked.  You could add a separate event listener to each individual `LI` element, but what if `LI` elements are frequently added and removed from the list?  Adding and removing event listeners would be a nightmare, especially if addition and removal code is in different places within your app. The better solution is to add an event listener to the parent UL element. 
+Let's also say that something needs to happen when each child element is clicked.  You could add a separate event listener to each individual `LI` element, but what if `LI` elements are frequently added and removed from the list?  Adding and removing event listeners would be a nightmare, especially if addition and removal code is in different places within your app. The better solution is to add an event listener to the parent UL element.
 
 When the event bubbles up to the `UL` element, you check the event object's target property to gain a reference to the actual clicked node:
 
@@ -1147,7 +1147,7 @@ window.onclick = function(e){
 {{% /answer %}}
 
 ### AJAX
-  
+
 > Explain AJAX in as much detail as possible
 
 {{% answer %}}
@@ -1277,7 +1277,7 @@ To get ES6 working today, you need a JavaScript-to-JavaScript transpiler:
 * As browser support gets better, we’ll transpile ES2016 and ES2017 into ES6 and beyond
 * We’ll need better source mapping functionality
 * They’re the most reliable way to run ES6 source code in production today (although browsers get ES5)
-* 
+*
 Use `babel` to transpile ES6 into ES5 for static build
 
 Use `babelify` to incorporate babel into your `Gulp`, `Grunt`, or `npm` run build process
@@ -1356,7 +1356,7 @@ TODO with https://ponyfoo.com/articles/es6
 {{% answer %}}
 **Answer:**
 
-For many years JS had a single widely accepted module format, which is to say, there was none. Everything was a global variable petulantly hanging off the window object. 
+For many years JS had a single widely accepted module format, which is to say, there was none. Everything was a global variable petulantly hanging off the window object.
 
 Dark Ages. Long ago an adhoc group formed to solve the global conflict. The fruits of this vigilante justice are known today as CommonJS. Multiple competing formats were proposed and implemented in the wild by these dashing radicals and two bright lights emerged with significant adherents: AMD and CJS.
 
@@ -1489,11 +1489,11 @@ Take this little bit of JavaScript:
 ```js
 console.log('script start')
 
-const interval = setInterval(() => {  
+const interval = setInterval(() => {
   console.log('setInterval')
 }, 0)
 
-setTimeout(() => {  
+setTimeout(() => {
   console.log('setTimeout 1')
   Promise.resolve().then(() => {
     console.log('promise 3')
@@ -1513,7 +1513,7 @@ setTimeout(() => {
   })
 }, 0)
 
-Promise.resolve().then(() => {  
+Promise.resolve().then(() => {
   console.log('promise 1')
 }).then(() => {
   console.log('promise 2')
@@ -1521,22 +1521,22 @@ Promise.resolve().then(() => {
 console.log('script end')
 ```
 
-**Answer:** 
+**Answer:**
 
 ```js
 script start
 script end
-promise 1  
-promise 2  
-setInterval  
-setTimeout 1  
-promise 3  
-promise 4  
-setInterval  
-setTimeout 2  
-setInterval  
-promise 5  
-promise 6  
+promise 1
+promise 2
+setInterval
+setTimeout 1
+promise 3
+promise 4
+setInterval
+setTimeout 2
+setInterval
+promise 5
+promise 6
 ```
 To understand this you need to know how the event loop handles macrotasks and microtasks.
 
@@ -1574,7 +1574,7 @@ More people are familiar with OO and imperative programming than functional prog
 > What does "favor object composition over class inheritance" mean?
 
 {{% answer %}}
-This is a quote from "Design Patterns: Elements of Reusable Object-Oriented Software". 
+This is a quote from "Design Patterns: Elements of Reusable Object-Oriented Software".
 
 Object composition is a way to combine simple objects or data types into more complex ones. It means that code reuse should be achieved by assembling smaller units of functionality into new objects instead of inheriting from classes and creating object taxonomies.
 
@@ -1639,7 +1639,7 @@ Microservice cons: As you’re building a new microservice architecture, you’r
 {{% answer %}}
 **Answer:** `doctype` is an instruction to the browser to inform about the version of html document and how browser should render it.
 
-**Explanation:** 
+**Explanation:**
 
 It ensures how element should be displayed on the page by most of the browser. And it also makes browser's life easier. otherwise, browser will guess and will go to quirks mode. Moreover, `doctype` is required to validate markup.
 
@@ -1688,7 +1688,7 @@ This means that to use them semantically, divs should be used to wrap sections o
 {{% answer %}}
 **Answer:** Semantic HTML is a coding style where the tags embody what the text is meant to convey.
 
-**Explanation:** 
+**Explanation:**
 
 In Semantic HTML, tags like `<b></b>` for bold, and `<i></i>` for italic should not be used, reason being they just represent formatting, and provide no indication of meaning or structure. The semantically correct thing to do is use `<strong></strong>` and `<em></em>`. These tags will have the same bold and italic effects, while demonstrating meaning and structure (emphasis in this case).
 {{% /answer %}}
@@ -1704,7 +1704,7 @@ There are [several](https://www.w3.org/TR/html-markup/bdi.html#bdi): `<article>,
 > What are the new media-related elements in HTML5?
 
 {{% answer %}}
-**Answer:** 
+**Answer:**
 
 HTML5 has strong support for media. There are now special `<audio>` and `<video>` tags. There are additional A/V support tags as well: `<embed>` is a container for 3rd party applications.
 {{% /answer %}}
@@ -1712,12 +1712,12 @@ HTML5 has strong support for media. There are now special `<audio>` and `<video>
 > What is the difference between `SVG` and `Canvas`?
 
 {{% answer %}}
-**Answer:** 
+**Answer:**
 
 * `SVG` is a document format for scalable vector graphics.
 * `Canvas` is a javascript API for drawing vector graphics to a bitmap of a specific size.
 
-**Explanation:** 
+**Explanation:**
 
 SVG is XML based, which means that every element is available within the SVG DOM. You can attach JavaScript event handlers for an element.
 
@@ -1779,7 +1779,7 @@ You can save to `localStorage` and `sessionStorage` only primitives, for object 
 
 ## JS Framework
 
-### AngularJS 
+### AngularJS
 
 > List at least three ways to communicate between modules of your application using core AngularJS functionality.
 
@@ -1805,7 +1805,7 @@ Events can be tested. In unit testing controllers, they usually are instantiated
 For testing direct `communication` between `controller`s, the expected results should probably be mocked. Otherwise, controllers would need to be manually instantiated to have the right context.
 {{% /answer %}}
 
-> The most popular e2e testing tool for AngularJS is Protractor. Describe how e2e testing of AngularJS 
+> The most popular e2e testing tool for AngularJS is Protractor. Describe how e2e testing of AngularJS
 {{% answer %}}applications work?
 
 The e2e tests are executed against a running app, that is a fully initialized system. They most often spawn a browser instance and involve the actual input of commands through the user interface. The written code is evaluated by an automation program, such as a Selenium server (webdriver). That program sends commands to a browser instance, then evaluates the visible results and reports back to the user.
@@ -1910,7 +1910,7 @@ var deregisterWatchFn = $rootScope.$watch(‘someGloballyAvailableProperty’, f
 > Name and describe the phases of a directive definition function execution, or describe how directives are instantiated.
 
 {{% answer %}}
-Each directive undergoes something similar to a life cycle as AngularJS compiles and links the DOM. The directive lifecycle begins and ends within the AngularJS bootstrapping process, before the page is rendered. 
+Each directive undergoes something similar to a life cycle as AngularJS compiles and links the DOM. The directive lifecycle begins and ends within the AngularJS bootstrapping process, before the page is rendered.
 
 In a directive’s life cycle, there are four distinct functions that can execute if they are defined. Each enables the developer to control and customize the directive at different points of the life cycle.
 
@@ -2018,7 +2018,7 @@ The `setTimeout()` is called with a 0 delay which causes an actual delay of arou
 > What is the difference between "ng-show"/"ng-hide" and "ng-if" directives?
 
 {{% answer %}}
-`ng-show`/`ng-hide` will always insert the DOM element, but will display/hide it based on the condition. 
+`ng-show`/`ng-hide` will always insert the DOM element, but will display/hide it based on the condition.
 
 `ng-if` will not insert the DOM element until the condition is not fulfilled.
 
@@ -2043,7 +2043,7 @@ jQuery takes a traditional imperative approach to manipulating the DOM. In an im
 
 AngularJS however takes a declarative approach to DOM manipulation. Here instead of worrying about all of the step by step details regarding how to do the desired outcome, AngularJS abstracts that and allows you to just say what you want done, in this case, "AngularJS, when the state of the input is at 150 characters, do this." We are just declaring what we want and AngularJS worries about the rest, taking care of everything for us.
 
-It might seem like I'm just splitting hairs here, but it's really an important distinction. AngularJS wants you basing your actions around the data models you create. It's how the entire framework works and how your applications will be structured. 
+It might seem like I'm just splitting hairs here, but it's really an important distinction. AngularJS wants you basing your actions around the data models you create. It's how the entire framework works and how your applications will be structured.
 
 To simply begin writing side scripts in jQuery where you are plucking out elements and setting up side event listeners just goes against the AngularJS approach in my opinion.
 {{% /answer %}}
@@ -2195,7 +2195,7 @@ Only when setting an element property to a non-string data value, you must use p
 
 ngOnChanges(changes: SimpleChanges) {
 
-  // You can also use categoryId.previousValue and 
+  // You can also use categoryId.previousValue and
   // categoryId.firstChange for comparing old and new values
   this.doSomething(changes.categoryId.currentValue);
 
@@ -2205,11 +2205,11 @@ ngOnChanges(changes: SimpleChanges) {
 * Alternately, you can also use an input property `setter` as follows:
 
 ```js
-private _name = '';
- 
+private entityName = '';
+
 @Input()
 set name(name: string) {
-  this._name = (name && name.trim()) || '<no name set>';
+  this.entityName = (name && name.trim()) || '<no name set>';
 }
 ```
 
@@ -2251,8 +2251,8 @@ The purpose of a `NgModule` is to declare each thing you create in Angular. Ther
 {{% answer %}}
 `declarations` and `providers` not having the same scope / visibility:
 
-* `declarations` / `components` / `pipes` are in local scope (private visibility)
-* `providers` / `services`  are in global scope (public visibility).
+* `declarations`:  `components` / `directives` / `pipes` are in local scope (private visibility)
+* `providers`: `services` are in global scope (public visibility).
 
 It means the components you declared are only usable in the current module. If you need to use them outside, in other modules, you’ll have to export them :
 
@@ -2344,7 +2344,7 @@ ro.length = 100; // error!
 a = ro; // error!
 ```
 
-* Index signature 
+* Index signature
 
 ```js
 interface SquareConfig {
@@ -2423,7 +2423,7 @@ For TypeScript libs:
 
 1. Installing `npm i lodash`
 2. Install the TS type definitions `npm i @types/lodash`
-3. Import and use 
+3. Import and use
 
 ```js
 import { chunk } from "lodash";
@@ -2440,25 +2440,26 @@ For Non TypeScript libs:
 1. Installing `npm i shave`
 2. `cannot find module shave` -> You are getting this error because the shave library doesn’t have declaration file and Typescript doesn’t know what shave is.
 3. Create TS type definitions:
+
 ```js
 // shave.d.ts
 declare module “shave” {
 
- export interface IShaveOptions {
-   classname? : string,
-   character? : string
- }
- 
- export default function shave( selector : string|Node, maxHeight : number, options? : IShaveOptions ) : void;
- 
+export interface IShaveOptions {
+  classname? : string,
+  character? : string
+}
+
+export default function shave( selector : string|Node, maxHeight : number, options? : IShaveOptions ) : void;
+
 }
 ```
-4. Add to tsconfig.json:
+* Add to `tsconfig.json`:
 
 ```js
 "files": ["typings/shave.d.ts"]
 ```
-5. Import and use
+* Import and use
 {{% /answer %}}
 
 > Why are components not marked with @injectable annotation, but services need to be?
@@ -2597,7 +2598,7 @@ providers: [{ provide: Auth, useClass: UserAuth }] // app.service() in ng1
 * If you want to alias an old provider to be handled by a new provider, you can do so with `useExisting`. This would be useful if, for example, a component needs to be still be using the old provider, but the logic should still be handled by the new provider:
 
 ```js
-providers: [{ provide: OldService, useExisting: NewService }] 
+providers: [{ provide: OldService, useExisting: NewService }]
 ```
 
 * Most of the time classes are used as providers, but simple values can also be used instead with useValue:
@@ -2615,7 +2616,7 @@ providers: [{ provide: AuthConfig, useValue: AUTH_CONFIG }] // app.constant() an
 
 ```js
 // app.factory() in ng1
-{ 
+{
   provide: 'CustomDependency',
   deps: [A, B]
   useFactory: (a:A, b:B) => {
@@ -2663,7 +2664,7 @@ trackByHeroes(index: number, hero: Hero): number { return hero.id; }
 // antipattern
 constructor(element: ElementRef) { ... }
 
-ngAfterViewInit() { 
+ngAfterViewInit() {
   this.element.nativeElement.querySelector('#someElementId')
 }
 ```
@@ -2681,28 +2682,28 @@ ngAfterViewInit() {
 
 ```js
 import { Directive, ElementRef, HostListener, Input } from '@angular/core';
- 
+
 @Directive({
   selector: '[myHighlight]'
 })
 export class HighlightDirective {
- 
+
   @Input('myHighlight') highlightColor: string;
- 
+
   private el: HTMLElement;
- 
+
   constructor(el: ElementRef) {
     this.el = el.nativeElement;
   }
- 
+
   @HostListener('mouseenter') onMouseEnter() {
     this.highlight(this.highlightColor || 'cyan');
   }
- 
+
   @HostListener('mouseleave') onMouseLeave() {
     this.highlight(null);
   }
- 
+
   private highlight(color: string) {
     this.el.style.backgroundColor = color;
   }
@@ -2812,6 +2813,146 @@ Interceptors come in handy in multiple scenarios:
 [How to implement](https://scotch.io/@kashyapmukkamala/using-http-interceptor-with-angular2)
 {{% /answer %}}
 
+> How to create a Custom Validator for Reactive Form?
+
+{{% answer %}}
+```js
+// url.validator.ts
+import { AbstractControl } from '@angular/forms';
+
+export function ValidateUrl(control: AbstractControl) {
+  if (!control.value.startsWith('https') || !control.value.includes('.io')) {
+    return { validUrl: true };
+  }
+  return null;
+}
+```
+
+```js
+// app.component.ts
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ValidateUrl } from './validators/url.validator';
+
+@Component({
+  // ...
+})
+export class AppComponent implements OnInit {
+  myForm: FormGroup;
+
+  constructor(private fb: FormBuilder) {}
+
+  ngOnInit() {
+    this.myForm = this.fb.group({
+      userName: ['', Validators.required],
+      websiteUrl: ['', [Validators.required, ValidateUrl]],
+    });
+  }
+}
+```
+
+```html
+<!--app.html-->
+<div
+*ngIf="myForm.get('websiteUrl').errors &&
+      myForm.get('websiteUrl').dirty &&
+      myForm.get('websiteUrl').errors.validUrl">
+  Oops, only urls served over https and only from the .io top-level domain are accepted.
+  Talk about restrictions!
+</div>
+```
+
+[More](https://alligator.io/angular/reactive-forms-custom-validator/)
+{{% /answer %}}
+
+
+> How to create a Custom Validator for Template-Driven Form?
+
+{{% answer %}}
+In template-driven forms, you don't have direct access to the `FormControl` instance, so you can't pass the validator in like you can for reactive forms. Instead, you need to add a directive to the template.
+
+```js
+// url-validator.directive.ts
+import { AbstractControl } from '@angular/forms';
+
+export function ValidateUrl(control: AbstractControl) {
+  if (!control.value.startsWith('https') || !control.value.includes('.io')) {
+    return { validUrl: true };
+  }
+  return null;
+}
+
+@Directive({
+  selector: '[urlValidator]',
+  providers: [{provide: NG_VALIDATORS, useExisting: ForbiddenValidatorDirective, multi: true}]
+})
+export class ForbiddenValidatorDirective implements Validator {
+  validate(control: AbstractControl) {
+    if (!control.value.startsWith('https') || !control.value.includes('.io')) {
+      return { validUrl: true };
+    }
+    return null;
+  }
+}
+```
+
+```html
+<!--app.html--->
+<input id="name" name="name" class="form-control"
+       required
+       minlength="4"
+       urlValidator
+       [(ngModel)]="hero.name" #name="ngModel" >
+```
+
+[More](https://angular.io/guide/form-validation#adding-to-template-driven-forms)
+{{% /answer %}}
+
+> How to create a Custom Async Validator?
+
+{{% answer %}}
+```js
+import { Component, OnInit } from '@angular/core';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  AbstractControl
+} from '@angular/forms';
+
+import { SignupService } from './signup.service';
+
+@Component({ ... })
+export class AppComponent implements OnInit {
+  myForm: FormGroup;
+
+  constructor(
+    private fb: FormBuilder,
+    private signupService: SignupService
+  ) {}
+
+  ngOnInit() {
+    this.myForm = this.fb.group({
+      name: ['', Validators.required],
+      email: [
+        '',
+        [Validators.required, Validators.email],
+        this.validateEmailNotTaken.bind(this)
+      ]
+    });
+  }
+
+  validateEmailNotTaken(control: AbstractControl) {
+    return this.signupService.checkEmailNotTaken(control.value).map(res => {
+      return res ? null : { emailTaken: true };
+    });
+  }
+}
+```
+
+[More](https://alligator.io/angular/async-validators/)
+{{% /answer %}}
+
 # Fundamentals
 
 ## Data Structure and algorithm
@@ -2865,7 +3006,7 @@ With primitive values:
 new Set([1, 2, 2, 1, 5]); // [1, 2, 5]
 ```
 
-With objects: 
+With objects:
 
 ```js
 Array.prototype.unique = function() {
